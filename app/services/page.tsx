@@ -42,20 +42,31 @@ export default function ServicesPage() {
             </ul>
           </div>
           <div className="card fade-in fade-delay-3">
-            <h3>
-              &quot;Working with Matthew to build my website for PCMX was a great
-              and learning experience&quot;
-            </h3>
-            <p className="subtitle" style={{ marginTop: "16px" }}>
-              &quot;Not only was Matthew able to build my website in less than two
-              weeks, but he also had a positive attitude throughout the entire
-              process. Any business owner / founder is in great hands with
-              Matthew.&quot;
-            </p>
-            <p style={{ marginTop: "12px", fontWeight: 600 }}>
-              Joel Camacho
-            </p>
+            <h3>Fully Shippable MVVP App Development (starting at $4,997)</h3>
+            <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
+              <li>1-week discovery + product scope</li>
+              <li>Lean UX/UI for core flows</li>
+              <li>Full-stack build (web or mobile)</li>
+              <li>Auth, payments, and analytics setup</li>
+              <li>QA, deployment, and handoff docs</li>
+            </ul>
           </div>
+        </div>
+        <div className="fade-in" style={{ marginTop: "48px" }}>
+          <h2 className="title">Hear what our clients are saying</h2>
+        </div>
+        <div className="card fade-in fade-delay-1" style={{ marginTop: "24px" }}>
+          <h3>
+            &quot;Working with Matthew to build my website for PCMX was a great and
+            learning experience&quot;
+          </h3>
+          <p className="subtitle" style={{ marginTop: "16px" }}>
+            &quot;Not only was Matthew able to build my website in less than two
+            weeks, but he also had a positive attitude throughout the entire
+            process. Any business owner / founder is in great hands with
+            Matthew.&quot;
+          </p>
+          <p style={{ marginTop: "12px", fontWeight: 600 }}>Joel Camacho</p>
         </div>
       </div>
     </section>

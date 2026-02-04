@@ -3,24 +3,38 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
+      <section className="hero-video">
+        <video
+          src="https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-label="PurposePath story reel"
+        />
+      </section>
+
       <section className="section">
         <div className="container">
           <p className="eyebrow fade-in">About Us</p>
-          <h1 className="title fade-in fade-delay-1">
-            PurposePath is an AI-native multimedia studio and product venture
-            building the tools—and the worlds—that let small teams create big
-            stories.
-          </h1>
+          <p className="subtitle fade-in fade-delay-1">
+            PurposePath is an AI-native multimedia studio and product venture building the tools—and the worlds—that let small teams create big stories. Born from the vision of a scrappy solo founder with an ambition to change how audiences interact with media forever, we’re making storytelling more accessible and less dependent on traditional production gatekeepers.
+          </p>
           <p className="subtitle fade-in fade-delay-2">
-            Born from the vision of a scrappy solo founder with an ambition to
-            ship meaningful media, we merge story, design, and technology for
-            creators who want to move fast without losing soul.
+            We’re building the PurposePath Story Engine to help creators move from idea to finished experience—concept art, animation, voice, music composition, editing, and beyond—without needing a giant studio behind them. This isn’t just content creation. It’s experience design: narratives that can evolve into interactive worlds where audiences shape outcomes through their choices.
+          </p>
+          <p className="subtitle fade-in fade-delay-3">
+            Alongside the Story Engine, RouteForge is our creator-first IP registry and licensing marketplace—designed for an AI era where provenance, permissions, and fair value exchange must be built in from the start. Our goal is to help founders, artists, and small teams collaborate with confidence and monetize original work through clear usage rights and licensing pathways.We believe the future of entertainment will be participatory—bridging animation, games, and community-driven story evolution. Audience choices don’t just enrich the narrative; they create a feedback loop that helps us refine stories, find niche communities, and expand the worlds that resonate most.
+          </p>
+          <p className="subtitle fade-in fade-delay-4">
+            We’re early, lean, and obsessed with iteration. But our direction is long-term: democratize world-class storytelling, honor creators, and build hybrid IP that can thrive across games, streaming, and the next mediums still being invented. Join us as we redefine storytelling, one choice at a time.
           </p>
         </div>
       </section>
 
       <section className="section">
-        <div className="container grid grid-2">
+        <div className="container">
           <div className="fade-in">
             <p className="eyebrow">MVP animation</p>
             <h2 className="title">Made using ChatGPT image gen &amp; Canva.</h2>
@@ -28,13 +42,6 @@ export default function HomePage() {
               Currently experimenting with Fauna &amp; ElevenLabs for a more
               robust production toolkit.
             </p>
-          </div>
-          <div className="video-frame fade-in fade-delay-1">
-            <video
-              src="https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov"
-              controls
-              playsInline
-            />
           </div>
         </div>
       </section>
