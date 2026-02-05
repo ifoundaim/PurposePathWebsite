@@ -1,21 +1,22 @@
 import Link from "next/link";
 import SubscribeForm from "@/components/SubscribeForm";
+import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container grid grid-2">
-        <div>
-          <p className="eyebrow">Stay in the loop</p>
-          <h2 className="title">Subscribe</h2>
-          <p className="subtitle">
+        <StaggerContainer staggerDelay={100}>
+          <p className="eyebrow stagger-item fall">Stay in the loop</p>
+          <h2 className="title stagger-item fall">Subscribe</h2>
+          <p className="subtitle stagger-item">
             PurposePath updates on new products, services, and collaborations.
           </p>
-          <div style={{ marginTop: "20px" }}>
+          <div className="stagger-item" style={{ marginTop: "20px" }}>
             <SubscribeForm />
           </div>
-        </div>
-        <div>
+        </StaggerContainer>
+        <ScrollReveal className="from-right" delay={150}>
           <p className="eyebrow">Links</p>
           <div className="footer-links" style={{ marginTop: "16px" }}>
             <Link href="/">Home</Link>
@@ -30,7 +31,7 @@ export default function Footer() {
             <Link href="#">Terms of Use</Link>
             <Link href="#">Cookie Settings</Link>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </footer>
   );

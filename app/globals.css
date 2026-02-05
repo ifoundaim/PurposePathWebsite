@@ -87,6 +87,42 @@ main {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
+.review-card {
+  display: grid;
+  gap: 16px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.review-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.review-name {
+  font-weight: 700;
+}
+
+.review-role {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.review-quote {
+  font-weight: 600;
+}
+
+.review-body {
+  color: var(--muted);
+}
+
 .grid {
   display: grid;
   gap: 24px;
@@ -249,27 +285,222 @@ label {
   font-size: 0.95rem;
 }
 
+/* ===== PAGE LOAD ANIMATIONS ===== */
 .fade-in {
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
 }
 
+.fade-in.fall {
+  animation-name: fadeInDown;
+}
+
 .fade-delay-1 {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 
 .fade-delay-2 {
-  animation-delay: 0.4s;
+  animation-delay: 0.3s;
 }
 
 .fade-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.fade-delay-4 {
   animation-delay: 0.6s;
+}
+
+.fade-delay-5 {
+  animation-delay: 0.75s;
+}
+
+.fade-delay-6 {
+  animation-delay: 0.9s;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== SCROLL-TRIGGERED ANIMATIONS ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fall from top */
+.scroll-reveal.fall {
+  transform: translateY(-30px);
+}
+
+.scroll-reveal.fall.revealed {
+  transform: translateY(0);
+}
+
+/* Slide from left */
+.scroll-reveal.from-left {
+  transform: translateX(-40px);
+}
+
+.scroll-reveal.from-left.revealed {
+  transform: translateX(0);
+}
+
+/* Slide from right */
+.scroll-reveal.from-right {
+  transform: translateX(40px);
+}
+
+.scroll-reveal.from-right.revealed {
+  transform: translateX(0);
+}
+
+/* Scale up */
+.scroll-reveal.scale-up {
+  transform: scale(0.92);
+}
+
+.scroll-reveal.scale-up.revealed {
+  transform: scale(1);
+}
+
+/* Blur in */
+.scroll-reveal.blur-in {
+  filter: blur(8px);
+  transform: translateY(20px);
+}
+
+.scroll-reveal.blur-in.revealed {
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Blur in from top (fall) */
+.scroll-reveal.blur-fall {
+  filter: blur(8px);
+  transform: translateY(-20px);
+}
+
+.scroll-reveal.blur-fall.revealed {
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* ===== STAGGER ANIMATIONS ===== */
+.stagger-container .stagger-item {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-container .stagger-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger items that fall from top */
+.stagger-container .stagger-item.fall {
+  transform: translateY(-25px);
+}
+
+.stagger-container .stagger-item.fall.revealed {
+  transform: translateY(0);
+}
+
+/* Card hover lift effect */
+.card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Section entrance */
+.section-animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-animate.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero video subtle animation */
+.hero-video {
+  animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Nav slide down animation */
+.nav {
+  animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer fade in */
+.footer {
+  opacity: 0;
+  animation: footerFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes footerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;

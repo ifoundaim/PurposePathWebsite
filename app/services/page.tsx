@@ -1,18 +1,22 @@
+import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
+
 export default function ServicesPage() {
   return (
     <section className="section">
       <div className="container">
-        <p className="eyebrow fade-in">Marketing Services</p>
-        <h1 className="title fade-in fade-delay-1">Marketing Services</h1>
-        <p className="subtitle fade-in fade-delay-2">
-          At PurposePath, we offer a suite of services designed to elevate your
-          brand and connect with your audience. Our expertise in storytelling
-          and digital marketing empowers purpose-driven founders to achieve
-          meaningful growth.
-        </p>
+        <StaggerContainer staggerDelay={100}>
+          <p className="eyebrow stagger-item fall">Marketing Services</p>
+          <h1 className="title stagger-item fall">Marketing Services</h1>
+          <p className="subtitle stagger-item">
+            At PurposePath, we offer a suite of services designed to elevate your
+            brand and connect with your audience. Our expertise in storytelling
+            and digital marketing empowers purpose-driven founders to achieve
+            meaningful growth.
+          </p>
+        </StaggerContainer>
 
-        <div className="grid grid-2" style={{ marginTop: "32px" }}>
-          <div className="card fade-in">
+        <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "32px" }}>
+          <div className="card stagger-item">
             <h3>Website Design &amp; Development (starting at $1,997)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>Custom Webflow design</li>
@@ -22,7 +26,7 @@ export default function ServicesPage() {
               <li>2 revision rounds</li>
             </ul>
           </div>
-          <div className="card fade-in fade-delay-1">
+          <div className="card stagger-item">
             <h3>Content Creation Bundle ‍ (starting at $797/mo)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>4 social media designs/mo</li>
@@ -32,7 +36,7 @@ export default function ServicesPage() {
               <li>Monthly planning call</li>
             </ul>
           </div>
-          <div className="card fade-in fade-delay-2">
+          <div className="card stagger-item">
             <h3>Targeted Ad Management ‍ (starting at $997/mo)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>Facebook/Instagram setup</li>
@@ -41,7 +45,7 @@ export default function ServicesPage() {
               <li>Performance reporting</li>
             </ul>
           </div>
-          <div className="card fade-in fade-delay-3">
+          <div className="card stagger-item">
             <h3>Fully Shippable MVVP App Development (starting at $4,997)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>1-week discovery + product scope</li>
@@ -51,23 +55,41 @@ export default function ServicesPage() {
               <li>QA, deployment, and handoff docs</li>
             </ul>
           </div>
-        </div>
-        <div className="fade-in" style={{ marginTop: "48px" }}>
-          <h2 className="title">Hear what our clients are saying</h2>
-        </div>
-        <div className="card fade-in fade-delay-1" style={{ marginTop: "24px" }}>
-          <h3>
-            &quot;Working with Matthew to build my website for PCMX was a great and
-            learning experience&quot;
-          </h3>
-          <p className="subtitle" style={{ marginTop: "16px" }}>
-            &quot;Not only was Matthew able to build my website in less than two
-            weeks, but he also had a positive attitude throughout the entire
-            process. Any business owner / founder is in great hands with
-            Matthew.&quot;
-          </p>
-          <p style={{ marginTop: "12px", fontWeight: 600 }}>Joel Camacho</p>
-        </div>
+        </StaggerContainer>
+
+        <ScrollReveal className="fall" delay={100}>
+          <h2 className="title" style={{ marginTop: "48px" }}>Hear what our clients are saying</h2>
+        </ScrollReveal>
+
+        <ScrollReveal className="scale-up" delay={200}>
+          <div
+            className="card review-card"
+            style={{ marginTop: "24px" }}
+          >
+            <div className="review-header">
+              <img
+                className="review-avatar"
+                src="https://github.com/ifoundaim/PurposePathWebsite/blob/main/joel%20icon.png"
+                alt="Joel Camacho"
+                loading="lazy"
+              />
+              <div>
+                <p className="review-name">Joel Camacho</p>
+                <p className="review-role">Founder, PCMX</p>
+              </div>
+            </div>
+            <p className="review-quote">
+              &quot;Working with Matthew to build my website for PCMX was great and a
+              learning experience&quot;
+            </p>
+            <p className="review-body">
+              &quot;Not only was Matthew able to build my website in less than two
+              weeks, but he also had a positive attitude throughout the entire
+              process. Any business owner / founder is in great hands with
+              Matthew.&quot;
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
