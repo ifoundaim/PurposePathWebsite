@@ -38,13 +38,28 @@ export default function HomePage() {
 
       <section className="section">
         <div className="container">
-          <ScrollReveal className="blur-fall">
-            <p className="eyebrow">MVP animation</p>
-            <h2 className="title">Made using Suno, ChatGPT image gen, Vidu video gen, &amp; CapCut.</h2>
-            <p className="subtitle">
-              Experienced with story & lyric writing, video editing, & image/video gen on a variety of APIs.
-            </p>
-          </ScrollReveal>
+          <div className="mvp-grid">
+            <ScrollReveal className="blur-fall mvp-media">
+              <div className="video-frame">
+                <video
+                  src="https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/gentle+to+give.mov"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label="PurposePath MVP animation reel"
+                />
+              </div>
+            </ScrollReveal>
+            <StaggerContainer className="card mvp-copy" staggerDelay={120}>
+              <p className="eyebrow stagger-item fall">MVP animation</p>
+              <h2 className="title stagger-item">
+                Made using Suno, ChatGPT image gen, Vidu video gen, &amp; CapCut.
+              </h2>
+              <p className="subtitle stagger-item">
+                Experienced with story & lyric writing, video editing, & image/video gen on a variety of APIs.
+              </p>
+            </StaggerContainer>
+          </div>
         </div>
       </section>
 
