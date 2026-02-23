@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
 import HeroVideo from "@/components/HeroVideo";
+import RainbowFlowText from "@/components/RainbowFlowText";
 
 export default function HomePage() {
   return (
@@ -88,7 +89,7 @@ export default function HomePage() {
             </div>
             <div className="stagger-item" style={{ marginTop: "24px" }}>
               <Link className="button secondary" href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
-                <span className="button-label">Throne</span>
+                <RainbowFlowText className="button-label" text="Throne" />
               </Link>
             </div>
           </StaggerContainer>

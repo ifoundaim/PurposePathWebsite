@@ -1,4 +1,5 @@
 import { contactFormEndpoint } from "@/lib/forms";
+import RainbowFlowText from "@/components/RainbowFlowText";
 
 export default function ContactForm() {
   return (
@@ -25,7 +26,7 @@ export default function ContactForm() {
         I accept the Terms
       </label>
       <button className="button contact-submit" type="submit">
-        <span className="button-label">Submit</span>
+        <RainbowFlowText className="button-label" text="Submit" />
       </button>
       <p className="subtitle" style={{ marginTop: "12px" }}>
         Thank you for your submission! We appreciate your interest and will be

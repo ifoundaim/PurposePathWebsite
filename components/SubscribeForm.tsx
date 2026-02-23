@@ -1,4 +1,5 @@
 import { subscribeFormEndpoint } from "@/lib/forms";
+import RainbowFlowText from "@/components/RainbowFlowText";
 
 export default function SubscribeForm() {
   return (
@@ -8,7 +9,7 @@ export default function SubscribeForm() {
         <input type="email" name="email" placeholder="Your Email" required />
       </label>
       <button className="button secondary" type="submit">
-        <span className="button-label">Subscribe</span>
+        <RainbowFlowText className="button-label" text="Subscribe" />
       </button>
     </form>
   );

@@ -23,3 +23,7 @@
 - Restore reliable hero autoplay in `components/HeroVideo.tsx` by starting muted first, then attempting to enable sound at `50%` when browser autoplay policy allows.
 - Refresh regression coverage in `tests/site.spec.ts` to validate hero startup volume is `0.5` and playback begins on page load (`paused: false`).
 - Update footer links in `components/Footer.tsx` by renaming `Twitter` to `X` and removing `Terms of Use` plus `Cookie Settings`.
+- Add `components/RainbowFlowText.tsx` and switch button/menu labels to character-level animated rainbow text in `components/Header.tsx`, `components/ContactForm.tsx`, `components/SubscribeForm.tsx`, and `app/page.tsx`.
+- Expand holographic styling in `app/globals.css` for flowing border and glow effects, smoother loop timing, larger label text, thicker button outlines, and a static-border color-flow animation.
+- Remove the extra mobile-menu `CONTACT US` holographic button in `components/Header.tsx`, keeping only the standard `Contact` menu link.
+- Match `Menu` button hover styling to page buttons and shift hover glow rendering from static purple shadow to animated holographic rainbow flow in `app/globals.css`.

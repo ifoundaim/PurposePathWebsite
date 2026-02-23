@@ -16,6 +16,16 @@
     #ffb2bf 80%,
     #e9b3ff 100%
   );
+  --rainbow-text-loop: linear-gradient(
+    90deg,
+    #8ec5ff 0%,
+    #8df0dd 16.66%,
+    #d7f06e 33.33%,
+    #ffd47a 50%,
+    #ffb2bf 66.66%,
+    #e9b3ff 83.33%,
+    #8ec5ff 100%
+  );
 }
 
 * {
@@ -171,11 +181,107 @@ main {
   justify-content: center;
   padding: 12px 20px;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   background: var(--accent);
   color: white;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  isolation: isolate;
+}
+
+.button::before,
+.menu-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(142, 197, 255, 0.95),
+      rgba(141, 240, 221, 0.92),
+      rgba(215, 240, 110, 0.9),
+      rgba(255, 212, 122, 0.9),
+      rgba(255, 178, 191, 0.92),
+      rgba(233, 179, 255, 0.95),
+      rgba(142, 197, 255, 0.95)
+    )
+      0% 50% / 250% 250% no-repeat,
+    linear-gradient(
+      300deg,
+      rgba(233, 179, 255, 0.55),
+      rgba(142, 197, 255, 0.5),
+      rgba(141, 240, 221, 0.45),
+      rgba(255, 212, 122, 0.4),
+      rgba(255, 178, 191, 0.45),
+      rgba(233, 179, 255, 0.55)
+    )
+      100% 50% / 220% 220% no-repeat;
+  pointer-events: none;
+  opacity: 0.72;
+  z-index: 0;
+  animation: holoBorderFlow 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.button::after,
+.menu-button::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  padding: 8px;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(142, 197, 255, 0.65),
+      rgba(141, 240, 221, 0.62),
+      rgba(215, 240, 110, 0.58),
+      rgba(255, 212, 122, 0.6),
+      rgba(255, 178, 191, 0.62),
+      rgba(233, 179, 255, 0.66),
+      rgba(142, 197, 255, 0.65)
+    )
+      0% 50% / 220% 220% repeat,
+    linear-gradient(
+      270deg,
+      rgba(233, 179, 255, 0.5),
+      rgba(142, 197, 255, 0.44),
+      rgba(141, 240, 221, 0.4),
+      rgba(255, 212, 122, 0.38),
+      rgba(255, 178, 191, 0.42),
+      rgba(233, 179, 255, 0.5)
+    )
+      100% 50% / 200% 200% repeat;
+  filter: blur(11px);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: holoGlowFlow 14s linear infinite;
+  transition: opacity 0.22s ease;
+}
+
+.button > *,
+.menu-button > * {
+  position: relative;
+  z-index: 1;
 }
 
 .button .button-label {
@@ -186,18 +292,57 @@ main {
     0 0 16px rgba(233, 179, 255, 0.24);
 }
 
+.button .button-label,
+.menu-button .menu-label {
+  display: inline-flex;
+  gap: 0.01em;
+  font-size: 1.08em;
+}
+
+.rainbow-flow-char {
+  display: inline-block;
+  color: #7c3aed;
+}
+
 @supports (-webkit-background-clip: text) {
-  .button .button-label {
-    background-image: var(--rainbow-text);
+  .button .button-label .rainbow-flow-char,
+  .menu-button .menu-label .rainbow-flow-char {
+    background-image: var(--rainbow-text-loop);
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: rainbowFlowShift 5s linear infinite;
+    animation-delay: calc(var(--char-index) * -0.12s);
+  }
+
+  .button:hover .rainbow-flow-char,
+  .button:focus-visible .rainbow-flow-char,
+  .menu-button:hover .rainbow-flow-char,
+  .menu-button:focus-visible .rainbow-flow-char {
+    animation-duration: 1.9s;
   }
 }
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
+  box-shadow: none;
+}
+
+.button:hover::before,
+.button:focus-visible::before,
+.menu-button:hover::before,
+.menu-button:focus-visible::before {
+  animation-duration: 2.6s;
+  opacity: 0.95;
+}
+
+.button:hover::after,
+.button:focus-visible::after,
+.menu-button:hover::after,
+.menu-button:focus-visible::after {
+  opacity: 0.92;
+  animation-duration: 9s;
 }
 
 .button.secondary {
@@ -243,19 +388,10 @@ main {
   color: #7c3aed;
 }
 
-@supports (-webkit-background-clip: text) {
-  .menu-button .menu-label {
-    background-image: var(--rainbow-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
-
 .menu-button:hover,
 .menu-button:focus-visible {
   border-color: rgba(124, 58, 237, 0.28);
-  box-shadow: 0 10px 22px rgba(80, 95, 60, 0.12);
+  box-shadow: none;
   transform: translateY(-1px);
 }
 
@@ -297,7 +433,7 @@ main {
 
 .menu-button {
   display: none;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 999px;
   padding: 8px 14px;
   background: linear-gradient(
@@ -311,6 +447,8 @@ main {
   border-color: rgba(142, 197, 255, 0.28);
   box-shadow: 0 6px 16px rgba(80, 95, 60, 0.08);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  position: relative;
+  isolation: isolate;
 }
 
 .mobile-menu {
@@ -625,6 +763,45 @@ label {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes rainbowFlowShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes holoBorderFlow {
+  0% {
+    background-position:
+      0% 50%,
+      100% 50%;
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    background-position:
+      200% 50%,
+      -100% 50%;
+    filter: hue-rotate(25deg);
+  }
+}
+
+@keyframes holoGlowFlow {
+  0% {
+    background-position:
+      0% 50%,
+      100% 50%;
+    filter: blur(11px) hue-rotate(0deg);
+  }
+  100% {
+    background-position:
+      200% 50%,
+      -100% 50%;
+    filter: blur(11px) hue-rotate(360deg);
   }
 }
 

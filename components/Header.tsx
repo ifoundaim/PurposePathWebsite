@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import RainbowFlowText from "@/components/RainbowFlowText";
 
 const navLinks = [
   { label: "Illustration Marketplace", href: "/illistration-market" },
@@ -33,7 +34,7 @@ export default function Header() {
         </nav>
         <div className="nav-links">
           <Link className="button menu-surface" href="/contact-us">
-            <span className="button-label">CONTACT US</span>
+            <RainbowFlowText className="button-label" text="CONTACT US" />
           </Link>
         </div>
         <button
@@ -42,7 +43,7 @@ export default function Header() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
-          <span className="menu-label">Menu</span>
+          <RainbowFlowText className="menu-label" text="Menu" />
         </button>
       </div>
       <div className={`container mobile-menu ${menuOpen ? "open" : ""}`}>
@@ -57,9 +58,6 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link className="button menu-surface" href="/contact-us">
-          <span className="button-label">CONTACT US</span>
-        </Link>
       </div>
     </header>
   );
