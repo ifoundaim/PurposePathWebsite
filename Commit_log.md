@@ -22,3 +22,4 @@
 - Update founder-support image sizing in `app/page.tsx` to use `object-fit: contain` with responsive width/height constraints so the full image displays without cropping.
 - Restore reliable hero autoplay in `components/HeroVideo.tsx` by starting muted first, then attempting to enable sound at `50%` when browser autoplay policy allows.
 - Refresh regression coverage in `tests/site.spec.ts` to validate hero startup volume is `0.5` and playback begins on page load (`paused: false`).
+- Update footer links in `components/Footer.tsx` by renaming `Twitter` to `X` and removing `Terms of Use` plus `Cookie Settings`.

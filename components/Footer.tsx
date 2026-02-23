@@ -22,14 +22,12 @@ export default function Footer() {
             <Link href="/">Home</Link>
             <Link href="/contact-us">Contact</Link>
             <Link href="https://twitter.com" target="_blank" rel="noreferrer">
-              Twitter
+              X
             </Link>
             <Link href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
               Throne
             </Link>
             <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms of Use</Link>
-            <Link href="#">Cookie Settings</Link>
           </div>
         </ScrollReveal>
       </div>
