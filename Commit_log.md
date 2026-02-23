@@ -13,3 +13,6 @@
 - Add resilient rainbow text labels for buttons (`.button-label`, `.menu-label`) with WebKit-safe fallback styling in `app/globals.css`.
 - Update button markup in `components/Header.tsx`, `components/ContactForm.tsx`, `components/SubscribeForm.tsx`, and `app/page.tsx` to use shared label spans.
 - Keep style texture by scoping the menu-like pastel background to the contact submit action via `.contact-submit` in `components/ContactForm.tsx` and `app/globals.css`.
+- Replace the homepage hero `<video>` with `components/HeroVideo.tsx` to default playback volume to `50%`, add a dedicated mute/unmute control, auto-mute when other media plays, and keep background playback running if paused.
+- Style the hero audio toggle overlay in `app/globals.css` for reliable click handling over video.
+- Add regression coverage in `tests/site.spec.ts` for hero audio toggle behavior, media-priority auto-mute, and pause-resume guard logic.

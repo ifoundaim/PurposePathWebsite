@@ -1,20 +1,11 @@
 import Link from "next/link";
 import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
+import HeroVideo from "@/components/HeroVideo";
 
 export default function HomePage() {
   return (
     <>
-      <section className="hero-video">
-        <video
-          src="https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-label="PurposePath story reel"
-        />
-      </section>
+      <HeroVideo />
 
       <section className="section">
         <div className="container">
