@@ -12,6 +12,18 @@ export default function ContactPage() {
             Matthew Reese is eager to speak to potential creative partners,
             distributors, and investors.
           </p>
+          <img
+            className="stagger-item"
+            src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/IMG_4570.heic"
+            alt="Founder portrait"
+            style={{
+              width: "550px",
+              height: "550px",
+              objectFit: "cover",
+              borderRadius: "14px",
+              marginTop: "12px",
+            }}
+          />
         </StaggerContainer>
         <ScrollReveal className="from-right" delay={200}>
           <div className="card">

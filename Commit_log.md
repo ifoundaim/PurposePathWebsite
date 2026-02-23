@@ -6,3 +6,5 @@
 - Enable automatic GitHub Pages setup in the deploy workflow when Pages is not configured yet.
 - Refresh generated Next.js route type import path in `next-env.d.ts`.
 - Add founder-support section image beside the heading text in `app/page.tsx`.
+- Replace the homepage founder-support image with `IMG_9746 2.jpg` and resize it to `550x550` in `app/page.tsx`.
+- Add `IMG_4570.heic` under the contact subtitle on `app/contact-us/page.tsx` with matching `550x550` dimensions.

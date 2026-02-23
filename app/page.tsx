@@ -83,11 +83,11 @@ export default function HomePage() {
                 founder mode.
               </h2>
               <img
-                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/goatedawg.jpeg"
+                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/IMG_9746%202.jpg"
                 alt="Support the founder on Throne"
                 style={{
-                  width: "220px",
-                  height: "220px",
+                  width: "550px",
+                  height: "550px",
                   objectFit: "cover",
                   borderRadius: "14px",
                 }}
