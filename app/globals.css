@@ -222,6 +222,23 @@ main {
   box-shadow: 0 10px 22px rgba(80, 95, 60, 0.12);
 }
 
+.menu-surface {
+  background: linear-gradient(
+    120deg,
+    rgba(142, 197, 255, 0.16),
+    rgba(141, 240, 221, 0.12),
+    rgba(233, 179, 255, 0.14)
+  );
+  border-color: rgba(142, 197, 255, 0.28);
+  box-shadow: 0 6px 16px rgba(80, 95, 60, 0.08);
+}
+
+.menu-surface:hover,
+.menu-surface:focus-visible {
+  border-color: rgba(124, 58, 237, 0.28);
+  box-shadow: 0 10px 22px rgba(80, 95, 60, 0.12);
+}
+
 .menu-button .menu-label {
   color: #7c3aed;
 }

@@ -32,7 +32,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="nav-links">
-          <Link className="button" href="/contact-us">
+          <Link className="button menu-surface" href="/contact-us">
             <span className="button-label">CONTACT US</span>
           </Link>
         </div>
@@ -57,7 +57,7 @@ export default function Header() {
             {link.label}
           </Link>
         ))}
-        <Link className="button" href="/contact-us">
+        <Link className="button menu-surface" href="/contact-us">
           <span className="button-label">CONTACT US</span>
         </Link>
       </div>

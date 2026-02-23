@@ -16,3 +16,4 @@
 - Replace the homepage hero `<video>` with `components/HeroVideo.tsx` to default playback volume to `50%`, add a dedicated mute/unmute control, auto-mute when other media plays, and keep background playback running if paused.
 - Style the hero audio toggle overlay in `app/globals.css` for reliable click handling over video.
 - Add regression coverage in `tests/site.spec.ts` for hero audio toggle behavior, media-priority auto-mute, and pause-resume guard logic.
+- Make header `CONTACT US` actions match the `Menu` button surface by applying a shared `.menu-surface` class in `components/Header.tsx` and `app/globals.css`.
