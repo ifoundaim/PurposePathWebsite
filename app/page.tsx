@@ -67,11 +67,32 @@ export default function HomePage() {
         <div className="container">
           <StaggerContainer staggerDelay={150}>
             <p className="eyebrow stagger-item fall">Support the Founder on Throne</p>
-            <h2 className="title stagger-item">
-              I&apos;m scrappy. I will gratefully &amp; humbly accept all the help
-              I can receive to keep up with my health as I lock-in to founder
-              mode.
-            </h2>
+            <div
+              className="stagger-item"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "20px",
+                flexWrap: "wrap",
+              }}
+            >
+              <h2 className="title" style={{ flex: "1 1 320px", margin: 0 }}>
+                I&apos;m scrappy. I will gratefully &amp; humbly accept all the
+                help I can receive to keep up with my health as I lock-in to
+                founder mode.
+              </h2>
+              <img
+                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/goatedawg.jpeg"
+                alt="Support the founder on Throne"
+                style={{
+                  width: "220px",
+                  height: "220px",
+                  objectFit: "cover",
+                  borderRadius: "14px",
+                }}
+              />
+            </div>
             <div className="stagger-item" style={{ marginTop: "24px" }}>
               <Link className="button" href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
                 Throne

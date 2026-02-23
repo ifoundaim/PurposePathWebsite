@@ -5,3 +5,4 @@
 - Add GitHub Actions workflow at `.github/workflows/deploy-github-pages.yml` to build and deploy from `main`.
 - Enable automatic GitHub Pages setup in the deploy workflow when Pages is not configured yet.
 - Refresh generated Next.js route type import path in `next-env.d.ts`.
+- Add founder-support section image beside the heading text in `app/page.tsx`.
