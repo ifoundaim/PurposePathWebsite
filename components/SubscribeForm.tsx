@@ -8,7 +8,7 @@ export default function SubscribeForm() {
         <input type="email" name="email" placeholder="Your Email" required />
       </label>
       <button className="button secondary" type="submit">
-        Subscribe
+        <span className="button-label">Subscribe</span>
       </button>
     </form>
   );

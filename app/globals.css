@@ -1,12 +1,21 @@
 :root {
-  color-scheme: dark;
-  --bg: #0b0b0f;
-  --bg-alt: #11111a;
-  --text: #f5f5f7;
-  --muted: #b6b6c5;
+  color-scheme: light;
+  --bg: #f8f8f0;
+  --bg-alt: #eef0e6;
+  --text: #35382f;
+  --muted: #62675a;
   --accent: #7c3aed;
   --accent-soft: rgba(124, 58, 237, 0.2);
-  --border: rgba(255, 255, 255, 0.08);
+  --border: rgba(98, 103, 90, 0.24);
+  --rainbow-text: linear-gradient(
+    90deg,
+    #8ec5ff 0%,
+    #8df0dd 20%,
+    #d7f06e 40%,
+    #ffd47a 60%,
+    #ffb2bf 80%,
+    #e9b3ff 100%
+  );
 }
 
 * {
@@ -84,7 +93,7 @@ main {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 38px rgba(25, 30, 14, 0.08);
 }
 
 .review-card {
@@ -169,6 +178,23 @@ main {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.button .button-label {
+  color: #7c3aed;
+  text-shadow:
+    0 0 8px rgba(142, 197, 255, 0.35),
+    0 0 12px rgba(141, 240, 221, 0.28),
+    0 0 16px rgba(233, 179, 255, 0.24);
+}
+
+@supports (-webkit-background-clip: text) {
+  .button .button-label {
+    background-image: var(--rainbow-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 .button:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
@@ -177,14 +203,50 @@ main {
 .button.secondary {
   background: transparent;
   border-color: var(--border);
-  color: var(--text);
+}
+
+.contact-submit {
+  background: linear-gradient(
+    120deg,
+    rgba(142, 197, 255, 0.16),
+    rgba(141, 240, 221, 0.12),
+    rgba(233, 179, 255, 0.14)
+  );
+  border-color: rgba(142, 197, 255, 0.28);
+  box-shadow: 0 6px 16px rgba(80, 95, 60, 0.08);
+}
+
+.contact-submit:hover,
+.contact-submit:focus-visible {
+  border-color: rgba(124, 58, 237, 0.28);
+  box-shadow: 0 10px 22px rgba(80, 95, 60, 0.12);
+}
+
+.menu-button .menu-label {
+  color: #7c3aed;
+}
+
+@supports (-webkit-background-clip: text) {
+  .menu-button .menu-label {
+    background-image: var(--rainbow-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.menu-button:hover,
+.menu-button:focus-visible {
+  border-color: rgba(124, 58, 237, 0.28);
+  box-shadow: 0 10px 22px rgba(80, 95, 60, 0.12);
+  transform: translateY(-1px);
 }
 
 .nav {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(11, 11, 15, 0.85);
+  background: rgba(248, 248, 240, 0.86);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
@@ -221,9 +283,17 @@ main {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 8px 14px;
-  background: transparent;
+  background: linear-gradient(
+    120deg,
+    rgba(142, 197, 255, 0.16),
+    rgba(141, 240, 221, 0.12),
+    rgba(233, 179, 255, 0.14)
+  );
   color: var(--text);
   font-weight: 600;
+  border-color: rgba(142, 197, 255, 0.28);
+  box-shadow: 0 6px 16px rgba(80, 95, 60, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .mobile-menu {
@@ -247,7 +317,7 @@ main {
   border-radius: 18px;
   border: 1px solid var(--border);
   overflow: hidden;
-  background: black;
+  background: var(--bg);
 }
 
 video {
@@ -259,7 +329,7 @@ video {
   width: 100%;
   padding: 0;
   border-bottom: 1px solid var(--border);
-  background: black;
+  background: var(--bg);
 }
 
 .hero-video video {
@@ -287,7 +357,7 @@ textarea {
   padding: 12px 14px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.58);
   color: var(--text);
 }
 
@@ -466,7 +536,7 @@ label {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 28px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 28px 50px rgba(25, 30, 14, 0.14);
 }
 
 /* Section entrance */

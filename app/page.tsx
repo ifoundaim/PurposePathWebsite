@@ -94,8 +94,8 @@ export default function HomePage() {
               />
             </div>
             <div className="stagger-item" style={{ marginTop: "24px" }}>
-              <Link className="button" href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
-                Throne
+              <Link className="button secondary" href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
+                <span className="button-label">Throne</span>
               </Link>
             </div>
           </StaggerContainer>

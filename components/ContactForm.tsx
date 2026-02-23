@@ -24,8 +24,8 @@ export default function ContactForm() {
         <input type="checkbox" name="terms" required />
         I accept the Terms
       </label>
-      <button className="button" type="submit">
-        Submit
+      <button className="button contact-submit" type="submit">
+        <span className="button-label">Submit</span>
       </button>
       <p className="subtitle" style={{ marginTop: "12px" }}>
         Thank you for your submission! We appreciate your interest and will be

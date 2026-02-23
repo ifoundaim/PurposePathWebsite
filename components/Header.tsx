@@ -33,7 +33,7 @@ export default function Header() {
         </nav>
         <div className="nav-links">
           <Link className="button" href="/contact-us">
-            CONTACT US
+            <span className="button-label">CONTACT US</span>
           </Link>
         </div>
         <button
@@ -42,7 +42,7 @@ export default function Header() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
-          Menu
+          <span className="menu-label">Menu</span>
         </button>
       </div>
       <div className={`container mobile-menu ${menuOpen ? "open" : ""}`}>
@@ -58,7 +58,7 @@ export default function Header() {
           </Link>
         ))}
         <Link className="button" href="/contact-us">
-          CONTACT US
+          <span className="button-label">CONTACT US</span>
         </Link>
       </div>
     </header>
