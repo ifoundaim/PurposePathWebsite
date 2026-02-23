@@ -41,9 +41,9 @@ test.describe("PurposePath site", () => {
     await expect(audioToggle).toBeVisible();
     await expect
       .poll(async () => heroVideo.evaluate((video) => Number(video.volume.toFixed(2))))
-      .toBe(0.4);
+      .toBe(0.5);
     await expect
-      .poll(async () => heroVideo.evaluate((video) => video.muted))
+      .poll(async () => heroVideo.evaluate((video) => video.paused))
       .toBe(false);
 
     const initialMuted = await heroVideo.evaluate((video) => video.muted);

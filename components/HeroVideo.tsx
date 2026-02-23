@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 const HERO_VIDEO_SRC =
   "https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov";
-const HERO_VIDEO_VOLUME = 0.4;
+const HERO_VIDEO_VOLUME = 0.5;
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,12 +17,13 @@ export default function HeroVideo() {
       return;
     }
 
+    // Start muted for reliable autoplay across browsers.
+    video.defaultMuted = true;
+    video.muted = true;
     video.volume = HERO_VIDEO_VOLUME;
-    video.muted = false;
-    setIsMuted(false);
+    setIsMuted(true);
 
-    // Try to start with sound; keep user preference if autoplay is blocked.
-    const playWithSound = async () => {
+    const startPlayback = async () => {
       try {
         await video.play();
       } catch {
@@ -30,7 +31,22 @@ export default function HeroVideo() {
       }
     };
 
-    void playWithSound();
+    // Best effort: switch to 50% sound on load when policy allows.
+    const tryEnableSound = async () => {
+      try {
+        video.muted = false;
+        await video.play();
+        setIsMuted(false);
+      } catch {
+        video.muted = true;
+        setIsMuted(true);
+      }
+    };
+
+    void (async () => {
+      await startPlayback();
+      await tryEnableSound();
+    })();
   }, []);
 
   useEffect(() => {
@@ -99,7 +115,9 @@ export default function HeroVideo() {
     if (!nextMuted) {
       video.volume = HERO_VIDEO_VOLUME;
       void video.play().catch(() => {
-        // Keep UI in sync if browser blocks unmute playback.
+        // Browser policy can block unmuting without user gesture in some cases.
+        video.muted = true;
+        setIsMuted(true);
       });
     }
 
@@ -113,6 +131,7 @@ export default function HeroVideo() {
           ref={videoRef}
           src={HERO_VIDEO_SRC}
           autoPlay
+          muted
           loop
           playsInline
           preload="auto"

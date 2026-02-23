@@ -19,3 +19,6 @@
 - Make header `CONTACT US` actions match the `Menu` button surface by applying a shared `.menu-surface` class in `components/Header.tsx` and `app/globals.css`.
 - Set hero video default startup volume to `40%` and keep sound-on preference (no forced mute fallback) in `components/HeroVideo.tsx`.
 - Extend regression checks in `tests/site.spec.ts` to assert hero startup state initializes at `volume: 0.4` and `muted: false`.
+- Update founder-support image sizing in `app/page.tsx` to use `object-fit: contain` with responsive width/height constraints so the full image displays without cropping.
+- Restore reliable hero autoplay in `components/HeroVideo.tsx` by starting muted first, then attempting to enable sound at `50%` when browser autoplay policy allows.
+- Refresh regression coverage in `tests/site.spec.ts` to validate hero startup volume is `0.5` and playback begins on page load (`paused: false`).

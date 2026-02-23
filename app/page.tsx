@@ -77,10 +77,12 @@ export default function HomePage() {
                 src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/IMG_9746%202.jpg"
                 alt="Support the founder on Throne"
                 style={{
-                  width: "550px",
-                  height: "550px",
-                  objectFit: "cover",
+                  width: "min(550px, 100%)",
+                  height: "auto",
+                  maxHeight: "550px",
+                  objectFit: "contain",
                   borderRadius: "14px",
+                  display: "block",
                 }}
               />
             </div>
