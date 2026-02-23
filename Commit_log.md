@@ -17,3 +17,5 @@
 - Style the hero audio toggle overlay in `app/globals.css` for reliable click handling over video.
 - Add regression coverage in `tests/site.spec.ts` for hero audio toggle behavior, media-priority auto-mute, and pause-resume guard logic.
 - Make header `CONTACT US` actions match the `Menu` button surface by applying a shared `.menu-surface` class in `components/Header.tsx` and `app/globals.css`.
+- Set hero video default startup volume to `40%` and keep sound-on preference (no forced mute fallback) in `components/HeroVideo.tsx`.
+- Extend regression checks in `tests/site.spec.ts` to assert hero startup state initializes at `volume: 0.4` and `muted: false`.

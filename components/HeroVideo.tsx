@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const HERO_VIDEO_SRC =
   "https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov";
-const HERO_VIDEO_VOLUME = 0.5;
+const HERO_VIDEO_VOLUME = 0.4;
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -21,18 +21,12 @@ export default function HeroVideo() {
     video.muted = false;
     setIsMuted(false);
 
-    // Try to start with sound, then gracefully fallback to muted autoplay.
+    // Try to start with sound; keep user preference if autoplay is blocked.
     const playWithSound = async () => {
       try {
         await video.play();
       } catch {
-        video.muted = true;
-        setIsMuted(true);
-        try {
-          await video.play();
-        } catch {
-          // Ignore if browser blocks autoplay entirely.
-        }
+        // Ignore if browser blocks autoplay entirely.
       }
     };
 
