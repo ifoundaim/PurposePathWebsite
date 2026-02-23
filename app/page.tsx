@@ -40,10 +40,9 @@ export default function HomePage() {
         <div className="container">
           <ScrollReveal className="blur-fall">
             <p className="eyebrow">MVP animation</p>
-            <h2 className="title">Made using ChatGPT image gen &amp; Canva.</h2>
+            <h2 className="title">Made using Suno, ChatGPT image gen, Vidu video gen, &amp; CapCut.</h2>
             <p className="subtitle">
-              Currently experimenting with Fauna &amp; ElevenLabs for a more
-              robust production toolkit.
+              Experienced with story & lyric writing, video editing, & image/video gen on a variety of APIs.
             </p>
           </ScrollReveal>
         </div>
