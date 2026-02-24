@@ -27,3 +27,9 @@
 - Expand holographic styling in `app/globals.css` for flowing border and glow effects, smoother loop timing, larger label text, thicker button outlines, and a static-border color-flow animation.
 - Remove the extra mobile-menu `CONTACT US` holographic button in `components/Header.tsx`, keeping only the standard `Contact` menu link.
 - Match `Menu` button hover styling to page buttons and shift hover glow rendering from static purple shadow to animated holographic rainbow flow in `app/globals.css`.
+
+## 2026-02-24
+
+- Apply a V1 holographic "pop pass" in `app/globals.css` by introducing tunable holo variables for border/glow opacity, blur, surface tint, and label micro-shadow.
+- Increase idle border definition, make glow visible at rest, and rebalance hover/active intensity so buttons pop on off-white while preserving the existing rainbow animation behavior.
+- Deepen key cyan/magenta gradient stops and add subtle local surface tint on `.button.secondary` and `.menu-button` for stronger contrast on light backgrounds.
