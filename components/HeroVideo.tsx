@@ -9,11 +9,12 @@ const HERO_VIDEO_VOLUME = 0.5;
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [hasVideoError, setHasVideoError] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoError) {
       return;
     }
 
@@ -47,14 +48,14 @@ export default function HeroVideo() {
       await startPlayback();
       await tryEnableSound();
     })();
-  }, []);
+  }, [hasVideoError]);
 
   useEffect(() => {
     const onAnyMediaPlay = (event: Event) => {
       const target = event.target;
       const heroVideo = videoRef.current;
 
-      if (!(target instanceof HTMLMediaElement) || !heroVideo) {
+      if (!(target instanceof HTMLMediaElement) || !heroVideo || hasVideoError) {
         return;
       }
 
@@ -70,12 +71,12 @@ export default function HeroVideo() {
     return () => {
       document.removeEventListener("play", onAnyMediaPlay, true);
     };
-  }, []);
+  }, [hasVideoError]);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoError) {
       return;
     }
 
@@ -88,12 +89,12 @@ export default function HeroVideo() {
     return () => {
       video.removeEventListener("volumechange", syncMutedState);
     };
-  }, []);
+  }, [hasVideoError]);
 
   const handlePause = () => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoError) {
       return;
     }
 
@@ -105,7 +106,7 @@ export default function HeroVideo() {
   const handleToggleMute = () => {
     const video = videoRef.current;
 
-    if (!video) {
+    if (!video || hasVideoError) {
       return;
     }
 
@@ -127,26 +128,35 @@ export default function HeroVideo() {
   return (
     <section className="hero-video">
       <div className="hero-video-shell">
-        <video
-          ref={videoRef}
-          src={HERO_VIDEO_SRC}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-label="PurposePath story reel"
-          onPause={handlePause}
-        />
-        <button
-          type="button"
-          className="hero-audio-toggle"
-          onClick={handleToggleMute}
-          aria-pressed={isMuted}
-          aria-label={isMuted ? "Turn hero video sound on" : "Turn hero video sound off"}
-        >
-          {isMuted ? "Turn Sound On" : "Turn Sound Off"}
-        </button>
+        {hasVideoError ? (
+          <div className="hero-video-fallback" aria-label="PurposePath hero fallback">
+            <span className="hero-fallback-label">PurposePath story reel loading fallback</span>
+          </div>
+        ) : (
+          <>
+            <video
+              ref={videoRef}
+              src={HERO_VIDEO_SRC}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label="PurposePath story reel"
+              onPause={handlePause}
+              onError={() => setHasVideoError(true)}
+            />
+            <button
+              type="button"
+              className="hero-audio-toggle"
+              onClick={handleToggleMute}
+              aria-pressed={isMuted}
+              aria-label={isMuted ? "Turn hero video sound on" : "Turn hero video sound off"}
+            >
+              {isMuted ? "Turn Sound On" : "Turn Sound Off"}
+            </button>
+          </>
+        )}
       </div>
     </section>
   );
