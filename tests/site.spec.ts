@@ -6,8 +6,8 @@ test.describe("PurposePath site", () => {
     await expect(page.getByRole("link", { name: "Illustration Marketplace" }))
       .toBeVisible();
 
-    await page.getByRole("link", { name: "Marketing Services" }).click();
-    await expect(page.getByRole("heading", { name: "Marketing Services" }))
+    await page.getByRole("link", { name: "Skill Offers" }).click();
+    await expect(page.getByRole("heading", { name: "Skill Offers" }))
       .toBeVisible();
 
     await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
@@ -189,5 +189,26 @@ test.describe("PurposePath site", () => {
     expect(animationMeta.afterName).toContain("holoGlowFlow");
     expect(animationMeta.beforeDirection).toContain("alternate");
     expect(animationMeta.afterDirection).toContain("alternate");
+  });
+
+  test("scroll reveal elements include shimmer sweep on revealed state", async ({ page }) => {
+    await page.goto("/");
+
+    const shimmerStyles = await page.evaluate(() => {
+      const sheetTexts: string[] = [];
+      for (const styleSheet of Array.from(document.styleSheets)) {
+        const cssRules = (styleSheet as CSSStyleSheet).cssRules;
+        if (!cssRules) continue;
+        for (const rule of Array.from(cssRules)) {
+          sheetTexts.push(rule.cssText);
+        }
+      }
+      return sheetTexts.join("\n");
+    });
+
+    expect(shimmerStyles).toContain("@keyframes revealShimmerSweep");
+    expect(shimmerStyles).toContain(".scroll-reveal.revealed::after");
+    expect(shimmerStyles).toContain(".stagger-container .stagger-item.revealed::after");
+    expect(shimmerStyles).toContain("running revealShimmerSweep");
   });
 });

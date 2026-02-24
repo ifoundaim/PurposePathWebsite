@@ -778,11 +778,42 @@ label {
   transform: translateY(30px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+.scroll-reveal::after {
+  content: "";
+  position: absolute;
+  top: -28%;
+  bottom: -28%;
+  left: -42%;
+  width: 42%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-180%) skewX(-20deg);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(110, 183, 255, 0.26) 36%,
+      rgba(117, 228, 203, 0.34) 45%,
+      rgba(215, 240, 110, 0.32) 52%,
+      rgba(255, 212, 122, 0.3) 58%,
+      rgba(255, 154, 184, 0.34) 65%,
+      rgba(215, 134, 255, 0.32) 72%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  mix-blend-mode: screen;
+}
+
+.scroll-reveal.revealed::after {
+  animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s 1 both;
 }
 
 /* Fall from top */
@@ -849,11 +880,42 @@ label {
   transform: translateY(25px);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .stagger-container .stagger-item.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+.stagger-container .stagger-item::after {
+  content: "";
+  position: absolute;
+  top: -24%;
+  bottom: -24%;
+  left: -36%;
+  width: 36%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-170%) skewX(-18deg);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(110, 183, 255, 0.24) 36%,
+      rgba(117, 228, 203, 0.32) 45%,
+      rgba(215, 240, 110, 0.3) 52%,
+      rgba(255, 212, 122, 0.28) 58%,
+      rgba(255, 154, 184, 0.32) 65%,
+      rgba(215, 134, 255, 0.3) 72%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  mix-blend-mode: screen;
+}
+
+.stagger-container .stagger-item.revealed::after {
+  animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 1 both;
 }
 
 /* Stagger items that fall from top */
@@ -918,6 +980,23 @@ label {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes revealShimmerSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-220%) skewX(-20deg);
+  }
+  22% {
+    opacity: 0.28;
+  }
+  58% {
+    opacity: 0.52;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(420%) skewX(-20deg);
   }
 }
 
@@ -1062,5 +1141,12 @@ label {
   .footer-links {
     gap: 12px;
     font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal::after,
+  .stagger-container .stagger-item::after {
+    animation: none !important;
   }
 }

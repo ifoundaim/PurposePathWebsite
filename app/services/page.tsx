@@ -5,17 +5,19 @@ export default function ServicesPage() {
     <section className="section">
       <div className="container">
         <StaggerContainer staggerDelay={100}>
-          <p className="eyebrow stagger-item fall">Marketing Services</p>
-          <h1 className="title stagger-item fall">Marketing Services</h1>
+          <p className="eyebrow stagger-item fall">Skill Offers</p>
+          <h1 className="title stagger-item fall">Skill Offers</h1>
           <p className="subtitle stagger-item">
-            At PurposePath, we offer a suite of services designed to elevate your
-            brand and connect with your audience. Our expertise in storytelling
-            and digital marketing empowers purpose-driven founders to achieve
-            meaningful growth.
+            From website and app development to content creation and ad
+            management, PurposePath brings a range of skills to help
+            purpose-driven founders build and grow.
           </p>
         </StaggerContainer>
 
-        <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "32px" }}>
+        <ScrollReveal className="fall" delay={100}>
+          <p className="eyebrow" style={{ marginTop: "48px" }}>Development &amp; Design</p>
+        </ScrollReveal>
+        <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
           <div className="card stagger-item">
             <h3>Website Design &amp; Development (starting at $1,997)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
@@ -26,6 +28,22 @@ export default function ServicesPage() {
               <li>2 revision rounds</li>
             </ul>
           </div>
+          <div className="card stagger-item">
+            <h3>Fully Shippable MVVP App Development (starting at $4,997)</h3>
+            <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
+              <li>1-week discovery + product scope</li>
+              <li>Lean UX/UI for core flows</li>
+              <li>Full-stack build (web or mobile)</li>
+              <li>Auth, payments, and analytics setup</li>
+              <li>QA, deployment, and handoff docs</li>
+            </ul>
+          </div>
+        </StaggerContainer>
+
+        <ScrollReveal className="fall" delay={100}>
+          <p className="eyebrow" style={{ marginTop: "48px" }}>Marketing &amp; Content</p>
+        </ScrollReveal>
+        <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
           <div className="card stagger-item">
             <h3>Content Creation Bundle ‍ (starting at $797/mo)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
@@ -45,16 +63,6 @@ export default function ServicesPage() {
               <li>Performance reporting</li>
             </ul>
           </div>
-          <div className="card stagger-item">
-            <h3>Fully Shippable MVVP App Development (starting at $4,997)</h3>
-            <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
-              <li>1-week discovery + product scope</li>
-              <li>Lean UX/UI for core flows</li>
-              <li>Full-stack build (web or mobile)</li>
-              <li>Auth, payments, and analytics setup</li>
-              <li>QA, deployment, and handoff docs</li>
-            </ul>
-          </div>
         </StaggerContainer>
 
         <ScrollReveal className="fall" delay={100}>
@@ -69,7 +77,7 @@ export default function ServicesPage() {
             <div className="review-header">
               <img
                 className="review-avatar"
-                src="https://github.com/ifoundaim/PurposePathWebsite/blob/main/joel%20icon.png"
+                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/scale%20joel.png"
                 alt="Joel Camacho"
                 loading="lazy"
               />

@@ -44,3 +44,8 @@
 - Add hero media fallback handling in `components/HeroVideo.tsx` so failed video loads render a dedicated fallback shell and hide the audio toggle.
 - Expand `app/globals.css` with hero fallback visuals, subscribe feedback styles, disabled button treatment, and mobile responsiveness improvements for spacing, typography, and tap-target comfort.
 - Extend `tests/site.spec.ts` with regression checks for subscribe API wiring/UI feedback, hero fallback rendering, and mobile viewport control visibility; also harden existing selectors/assertions for stable execution.
+- Add shimmer sweep animation to scroll-reveal and stagger-item elements in `app/globals.css` with `revealShimmerSweep` keyframes, pastel gradient overlay, and `prefers-reduced-motion` respect.
+- Rename "Marketing Services" to "Skill Offers" across `app/services/page.tsx`, `components/Header.tsx`, and `tests/site.spec.ts`.
+- Reorganize services page into Development & Design and Marketing & Content sections; add MVVP App Development card to Development section.
+- Fix review avatar image URL in `app/services/page.tsx` to use raw GitHub URL for correct display.
+- Add regression test in `tests/site.spec.ts` for scroll-reveal shimmer sweep keyframes and revealed-state pseudo-element styling.
