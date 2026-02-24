@@ -33,3 +33,12 @@
 - Apply a V1 holographic "pop pass" in `app/globals.css` by introducing tunable holo variables for border/glow opacity, blur, surface tint, and label micro-shadow.
 - Increase idle border definition, make glow visible at rest, and rebalance hover/active intensity so buttons pop on off-white while preserving the existing rainbow animation behavior.
 - Deepen key cyan/magenta gradient stops and add subtle local surface tint on `.button.secondary` and `.menu-button` for stronger contrast on light backgrounds.
+- Build a "Pastel Prism" art direction in `app/globals.css` with warm/cool/lilac section atmosphere layers, frosted card surfaces, pearl-like sheens, and harmonized pastel holographic accents.
+- Update homepage section wrappers in `app/page.tsx` to apply `section-prism-warm`, `section-prism-cool`, and `section-prism-lilac` atmosphere classes.
+- Fix holographic border animation looping in `app/globals.css` by using repeating border gradient layers and seamless keyframe endpoints (`background-position` and hue cycle) to remove end-of-cycle snap/reset artifacts.
+- Add regression coverage in `tests/site.spec.ts` to assert seamless holographic keyframe endpoints and expected gradient tiling configuration.
+- Replace direct subscribe submission in `components/SubscribeForm.tsx` with client-side POST to `/api/subscribe`, adding inline loading, success, and error feedback states.
+- Add `app/api/subscribe/route.ts` with server-side email validation, safe Formspree forwarding via `lib/forms.ts`, and resilient JSON responses for misconfiguration/upstream failures.
+- Add hero media fallback handling in `components/HeroVideo.tsx` so failed video loads render a dedicated fallback shell and hide the audio toggle.
+- Expand `app/globals.css` with hero fallback visuals, subscribe feedback styles, disabled button treatment, and mobile responsiveness improvements for spacing, typography, and tap-target comfort.
+- Extend `tests/site.spec.ts` with regression checks for subscribe API wiring/UI feedback, hero fallback rendering, and mobile viewport control visibility; also harden existing selectors/assertions for stable execution.

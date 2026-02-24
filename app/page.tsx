@@ -8,7 +8,7 @@ export default function HomePage() {
     <>
       <HeroVideo />
 
-      <section className="section">
+      <section className="section section-prism-warm">
         <div className="container">
           <StaggerContainer staggerDelay={120}>
             <p className="eyebrow stagger-item fall">About Us</p>
@@ -28,7 +28,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-prism-cool">
         <div className="container">
           <div className="mvp-grid">
             <ScrollReveal className="blur-fall mvp-media">
@@ -55,7 +55,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-prism-lilac">
         <div className="container">
           <StaggerContainer staggerDelay={150}>
             <p className="eyebrow stagger-item fall">Support the Founder on Throne</p>
