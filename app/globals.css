@@ -34,6 +34,16 @@
     #e9b3ff 83.33%,
     #8ec5ff 100%
   );
+  --card-holo-spectrum-loop: linear-gradient(
+    90deg,
+    rgba(110, 183, 255, 0.95) 0%,
+    rgba(117, 228, 203, 0.9) 16.66%,
+    rgba(215, 240, 110, 0.84) 33.33%,
+    rgba(255, 212, 122, 0.83) 50%,
+    rgba(255, 154, 184, 0.9) 66.66%,
+    rgba(215, 134, 255, 0.95) 83.33%,
+    rgba(110, 183, 255, 0.95) 100%
+  );
   --holo-border-opacity-idle: 0.86;
   --holo-border-opacity-active: 0.98;
   --holo-glow-opacity-idle: 0.2;
@@ -45,6 +55,12 @@
     rgba(255, 255, 255, 0.88),
     rgba(230, 238, 255, 0.74),
     rgba(243, 231, 255, 0.72)
+  );
+  --holo-button-surface-tint: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(230, 238, 255, 0.74),
+    rgba(223, 245, 238, 0.7)
   );
   --prism-body-glow: radial-gradient(
     90% 60% at 10% 0%,
@@ -171,6 +187,67 @@ main {
 }
 
 .card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-soft {
+  background:
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(248, 246, 242, 0.92),
+      rgba(244, 244, 240, 0.9)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -22px 44px rgba(110, 183, 255, 0.055);
+  backdrop-filter: saturate(101%) blur(1.15px);
+}
+
+.card-soft::before,
+.card-soft::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-soft::before {
+  opacity: 0.165;
+  background:
+    var(--card-holo-spectrum-loop) 0% 50% / 200% 200% repeat,
+    var(--card-holo-spectrum-loop) 100% 50% / 200% 200% repeat;
+  filter: saturate(122%) contrast(104%);
+  animation: holoSpectrumFlow 6.1s linear infinite;
+}
+
+.card-soft::after {
+  opacity: 0.15;
+  background:
+    var(--card-holo-spectrum-loop) 20% 50% / 220% 220% repeat,
+    var(--card-holo-spectrum-loop) 120% 50% / 220% 220% repeat;
+  filter: blur(14px) saturate(116%);
+  animation: holoSpectrumFlow 7.4s linear infinite;
+  animation-delay: -2.2s;
+}
+
+.card-soft:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -28px 52px rgba(110, 183, 255, 0.07);
+}
+
+.card-holo {
   background:
     var(--prism-card-sheen),
     linear-gradient(
@@ -179,13 +256,53 @@ main {
       rgba(248, 246, 242, 0.88),
       rgba(237, 243, 255, 0.76)
     );
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
   box-shadow:
-    0 16px 34px rgba(28, 30, 20, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -24px 54px rgba(215, 134, 255, 0.34),
+    inset 0 0 46px rgba(110, 183, 255, 0.22);
   backdrop-filter: saturate(104%) blur(1.35px);
+  border-color: rgba(110, 183, 255, 0.24);
+}
+
+.card-holo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.88;
+  background:
+    var(--card-holo-spectrum-loop) 0% 50% / 200% 200% repeat,
+    var(--card-holo-spectrum-loop) 100% 50% / 200% 200% repeat;
+  filter: blur(10px) saturate(142%) contrast(114%);
+  animation: holoSpectrumFlow 3.2s linear infinite;
+}
+
+.card-holo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+  background:
+    var(--card-holo-spectrum-loop) 30% 50% / 210% 210% repeat,
+    var(--card-holo-spectrum-loop) 130% 50% / 210% 210% repeat;
+  mix-blend-mode: screen;
+  filter: blur(12px) saturate(162%) contrast(118%);
+  animation: holoSpectrumFlow 3.2s linear infinite;
+  animation-delay: -1.8s;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .review-card {
@@ -317,47 +434,7 @@ main {
 
 .button::after,
 .menu-button::after {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: inherit;
-  padding: 8px;
-  pointer-events: none;
-  z-index: -1;
-  opacity: var(--holo-glow-opacity-idle);
-  background:
-    linear-gradient(
-      90deg,
-      rgba(110, 183, 255, 0.66),
-      rgba(117, 228, 203, 0.63),
-      rgba(215, 240, 110, 0.58),
-      rgba(255, 212, 122, 0.6),
-      rgba(255, 154, 184, 0.64),
-      rgba(215, 134, 255, 0.67),
-      rgba(110, 183, 255, 0.66)
-    )
-      0% 50% / 220% 220% repeat,
-    linear-gradient(
-      270deg,
-      rgba(215, 134, 255, 0.52),
-      rgba(110, 183, 255, 0.46),
-      rgba(117, 228, 203, 0.42),
-      rgba(255, 212, 122, 0.38),
-      rgba(255, 154, 184, 0.44),
-      rgba(215, 134, 255, 0.52)
-    )
-      100% 50% / 200% 200% repeat;
-  filter: blur(var(--holo-glow-blur));
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: holoGlowFlow 14s linear infinite alternate;
-  transition: opacity 0.22s ease;
+  content: none;
 }
 
 .button > *,
@@ -374,9 +451,9 @@ main {
 .menu-button .menu-label {
   text-shadow:
     var(--holo-label-micro-shadow),
-    0 0 8px rgba(142, 197, 255, 0.35),
-    0 0 12px rgba(141, 240, 221, 0.28),
-    0 0 16px rgba(233, 179, 255, 0.24);
+    0 0 8px rgba(142, 197, 255, 0.22),
+    0 0 12px rgba(141, 240, 221, 0.16),
+    0 0 16px rgba(233, 179, 255, 0.12);
 }
 
 .button .button-label,
@@ -384,6 +461,9 @@ main {
   display: inline-flex;
   gap: 0.01em;
   font-size: 1.08em;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.24))
+    drop-shadow(0 1px 1.5px rgba(25, 26, 39, 0.16));
 }
 
 .rainbow-flow-char {
@@ -434,37 +514,32 @@ main {
 .button:focus-visible::after,
 .menu-button:hover::after,
 .menu-button:focus-visible::after {
-  opacity: var(--holo-glow-opacity-active);
-  animation-duration: 9s;
+  content: none;
 }
 
 .button.secondary {
-  background: var(--holo-surface-tint);
+  background: var(--holo-button-surface-tint);
   border-color: var(--border);
 }
 
 .contact-submit {
-  background: var(--holo-surface-tint);
+  background: var(--holo-button-surface-tint);
   border-color: rgba(110, 183, 255, 0.26);
-  box-shadow: 0 8px 18px rgba(80, 95, 60, 0.09);
 }
 
 .contact-submit:hover,
 .contact-submit:focus-visible {
   border-color: rgba(215, 134, 255, 0.28);
-  box-shadow: 0 12px 24px rgba(80, 95, 60, 0.12);
 }
 
 .menu-surface {
-  background: var(--holo-surface-tint);
+  background: var(--holo-button-surface-tint);
   border-color: rgba(110, 183, 255, 0.26);
-  box-shadow: 0 8px 18px rgba(80, 95, 60, 0.09);
 }
 
 .menu-surface:hover,
 .menu-surface:focus-visible {
   border-color: rgba(215, 134, 255, 0.28);
-  box-shadow: 0 12px 24px rgba(80, 95, 60, 0.12);
 }
 
 .menu-button .menu-label {
@@ -519,11 +594,10 @@ main {
   border: 2px solid var(--border);
   border-radius: 999px;
   padding: 8px 14px;
-  background: var(--holo-surface-tint);
+  background: var(--holo-button-surface-tint);
   color: var(--text);
   font-weight: 600;
   border-color: rgba(142, 197, 255, 0.28);
-  box-shadow: 0 6px 16px rgba(80, 95, 60, 0.08);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   position: relative;
   isolation: isolate;
@@ -816,6 +890,52 @@ label {
   animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 0.2s 1 both;
 }
 
+.hero-video-shell,
+.nav,
+.section-prism-warm {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video-shell::after,
+.nav::after,
+.section-prism-warm::after {
+  content: "";
+  position: absolute;
+  top: -26%;
+  bottom: -26%;
+  left: -40%;
+  width: 40%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-220%) skewX(-20deg);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(110, 183, 255, 0.24) 36%,
+      rgba(117, 228, 203, 0.32) 45%,
+      rgba(215, 240, 110, 0.3) 52%,
+      rgba(255, 212, 122, 0.28) 58%,
+      rgba(255, 154, 184, 0.32) 65%,
+      rgba(215, 134, 255, 0.3) 72%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  mix-blend-mode: screen;
+}
+
+.hero-video-shell::after {
+  animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s 1 both;
+}
+
+.nav::after {
+  animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 0.35s 1 both;
+}
+
+.section-prism-warm::after {
+  animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 0.45s 1 both;
+}
+
 /* Fall from top */
 .scroll-reveal.fall {
   transform: translateY(-30px);
@@ -889,7 +1009,7 @@ label {
   transform: translateY(0);
 }
 
-.stagger-container .stagger-item::after {
+.stagger-container .stagger-item:not(.card)::after {
   content: "";
   position: absolute;
   top: -24%;
@@ -914,8 +1034,13 @@ label {
   mix-blend-mode: screen;
 }
 
-.stagger-container .stagger-item.revealed::after {
+.stagger-container .stagger-item:not(.card).revealed::after {
   animation: revealShimmerSweep 3s cubic-bezier(0.16, 1, 0.3, 1) 1 both;
+}
+
+.stagger-container .stagger-item.card::after {
+  content: none;
+  animation: none;
 }
 
 /* Stagger items that fall from top */
@@ -928,14 +1053,22 @@ label {
 }
 
 /* Card hover lift effect */
-.card {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+.card-holo:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    inset 0 -30px 64px rgba(215, 134, 255, 0.42),
+    inset 0 0 60px rgba(110, 183, 255, 0.3);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 28px 50px rgba(25, 30, 14, 0.14);
+.card-holo:hover::before {
+  opacity: 0.96;
+}
+
+.card-holo:hover::after {
+  opacity: 0.62;
+  filter: blur(14px) saturate(145%) contrast(108%);
+  transform: scale(1.02);
 }
 
 /* Section entrance */
@@ -992,11 +1125,28 @@ label {
     opacity: 0.28;
   }
   58% {
-    opacity: 0.52;
+    opacity: 0.69;
   }
   100% {
     opacity: 0;
     transform: translateX(420%) skewX(-20deg);
+  }
+}
+
+@keyframes cardShadowDrift {
+  0% {
+    background-position:
+      0% 50%,
+      100% 50%,
+      14% 10%,
+      88% 92%;
+  }
+  100% {
+    background-position:
+      140% 50%,
+      -40% 50%,
+      20% 18%,
+      82% 86%;
   }
 }
 
@@ -1006,6 +1156,19 @@ label {
   }
   100% {
     background-position: 200% 50%;
+  }
+}
+
+@keyframes holoSpectrumFlow {
+  0% {
+    background-position:
+      0% 50%,
+      100% 50%;
+  }
+  100% {
+    background-position:
+      200% 50%,
+      300% 50%;
   }
 }
 
@@ -1146,7 +1309,8 @@ label {
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal::after,
-  .stagger-container .stagger-item::after {
+  .stagger-container .stagger-item::after,
+  .card-holo::after {
     animation: none !important;
   }
 }

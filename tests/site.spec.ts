@@ -31,6 +31,32 @@ test.describe("PurposePath site", () => {
     expect(subscribeFormAction).toBe("/api/subscribe");
   });
 
+  test("contact founder image uses uncropped contain sizing", async ({ page }) => {
+    await page.goto("/contact-us");
+
+    const founderImage = page.locator('img[alt="Founder portrait"]');
+    await expect(founderImage).toBeVisible();
+    await expect(founderImage).toHaveAttribute(
+      "src",
+      /READY%202%20GO\.jpg$/,
+    );
+
+    const computed = await founderImage.evaluate((img) => {
+      const style = getComputedStyle(img);
+      return {
+        objectFit: style.objectFit,
+        height: style.height,
+        naturalWidth: img.naturalWidth,
+        naturalHeight: img.naturalHeight,
+      };
+    });
+
+    expect(computed.objectFit).toBe("contain");
+    expect(computed.height).not.toBe("550px");
+    expect(computed.naturalWidth).toBeGreaterThan(0);
+    expect(computed.naturalHeight).toBeGreaterThan(0);
+  });
+
   test("subscribe form shows inline success and error states", async ({ page }) => {
     await page.route("**/api/subscribe", async (route) => {
       await route.fulfill({
@@ -208,7 +234,123 @@ test.describe("PurposePath site", () => {
 
     expect(shimmerStyles).toContain("@keyframes revealShimmerSweep");
     expect(shimmerStyles).toContain(".scroll-reveal.revealed::after");
-    expect(shimmerStyles).toContain(".stagger-container .stagger-item.revealed::after");
+    expect(shimmerStyles).toContain(".stagger-container .stagger-item:not(.card).revealed::after");
+    expect(shimmerStyles).toContain(".stagger-container .stagger-item.card::after");
+    expect(shimmerStyles).toContain(".hero-video-shell::after");
+    expect(shimmerStyles).toContain(".nav::after");
+    expect(shimmerStyles).toContain(".section-prism-warm::after");
     expect(shimmerStyles).toContain("running revealShimmerSweep");
+    expect(shimmerStyles).toContain("@keyframes cardShadowDrift");
+    expect(shimmerStyles).toContain(".card-soft");
+    expect(shimmerStyles).toContain(".card-holo");
+  });
+
+  test("services page maps soft and holo card variants correctly", async ({ page }) => {
+    await page.goto("/services");
+
+    const offerCards = page.locator(".card.card-soft.stagger-item");
+    await expect(offerCards).toHaveCount(4);
+
+    const testimonialCard = page.locator(".card.card-holo.review-card");
+    await expect(testimonialCard).toHaveCount(1);
+  });
+
+  test("card variants keep holographic shadow inside bounds with correct intensity", async ({ page }) => {
+    await page.goto("/services");
+
+    const cardStyles = await page.evaluate(() => {
+      const softCard = document.querySelector(".card.card-soft");
+      const holoCard = document.querySelector(".card.card-holo");
+      if (!softCard || !holoCard) return null;
+
+      const sheetTexts: string[] = [];
+      for (const styleSheet of Array.from(document.styleSheets)) {
+        const cssRules = (styleSheet as CSSStyleSheet).cssRules;
+        if (!cssRules) continue;
+        for (const rule of Array.from(cssRules)) {
+          sheetTexts.push(rule.cssText);
+        }
+      }
+
+      return {
+        softOverflow: getComputedStyle(softCard).overflow,
+        holoOverflow: getComputedStyle(holoCard).overflow,
+        softBeforeOpacity: getComputedStyle(softCard, "::before").opacity,
+        softAfterOpacity: getComputedStyle(softCard, "::after").opacity,
+        holoBeforeOpacity: getComputedStyle(holoCard, "::before").opacity,
+        holoAfterOpacity: getComputedStyle(holoCard, "::after").opacity,
+        softBeforeInset: getComputedStyle(softCard, "::before").inset,
+        softAfterInset: getComputedStyle(softCard, "::after").inset,
+        holoBeforeInset: getComputedStyle(holoCard, "::before").inset,
+        holoAfterInset: getComputedStyle(holoCard, "::after").inset,
+        softBeforeZ: getComputedStyle(softCard, "::before").zIndex,
+        softAfterZ: getComputedStyle(softCard, "::after").zIndex,
+        holoBeforeZ: getComputedStyle(holoCard, "::before").zIndex,
+        holoAfterZ: getComputedStyle(holoCard, "::after").zIndex,
+        softBeforeAnimation: getComputedStyle(softCard, "::before").animationName,
+        softAfterAnimation: getComputedStyle(softCard, "::after").animationName,
+        holoBeforeAnimation: getComputedStyle(holoCard, "::before").animationName,
+        holoAfterAnimation: getComputedStyle(holoCard, "::after").animationName,
+        cssText: sheetTexts.join("\n"),
+      };
+    });
+
+    expect(cardStyles).not.toBeNull();
+    expect(cardStyles?.softOverflow).toBe("hidden");
+    expect(cardStyles?.holoOverflow).toBe("hidden");
+    expect(cardStyles?.softBeforeInset).toBe("0px");
+    expect(cardStyles?.softAfterInset).toBe("0px");
+    expect(cardStyles?.holoBeforeInset).toBe("0px");
+    expect(cardStyles?.holoAfterInset).toBe("0px");
+    expect(cardStyles?.softBeforeZ).toBe("0");
+    expect(cardStyles?.softAfterZ).toBe("0");
+    expect(cardStyles?.holoBeforeZ).toBe("0");
+    expect(cardStyles?.holoAfterZ).toBe("0");
+    const softBeforeAnimation = cardStyles?.softBeforeAnimation ?? "";
+    const softAfterAnimation = cardStyles?.softAfterAnimation ?? "";
+    const holoBeforeAnimation = cardStyles?.holoBeforeAnimation ?? "";
+    const holoAfterAnimation = cardStyles?.holoAfterAnimation ?? "";
+    expect(
+      softBeforeAnimation === "none" ||
+        softBeforeAnimation.includes("rainbowFlowShift") ||
+        softBeforeAnimation.includes("holoSpectrumFlow"),
+    ).toBeTruthy();
+    expect(
+      softAfterAnimation === "none" ||
+        softAfterAnimation.includes("cardShadowDrift") ||
+        softAfterAnimation.includes("holoSpectrumFlow"),
+    ).toBeTruthy();
+    expect(
+      holoBeforeAnimation === "none" ||
+        holoBeforeAnimation.includes("rainbowFlowShift") ||
+        holoBeforeAnimation.includes("holoCardFlow") ||
+        holoBeforeAnimation.includes("holoSpectrumFlow"),
+    ).toBeTruthy();
+    expect(
+      holoAfterAnimation === "none" ||
+        holoAfterAnimation.includes("rainbowFlowShift") ||
+        holoAfterAnimation.includes("holoCardFlow") ||
+        holoAfterAnimation.includes("holoSpectrumFlow"),
+    ).toBeTruthy();
+    expect(Number(cardStyles?.softBeforeOpacity ?? 1)).toBeLessThanOrEqual(0.2);
+    expect(Number(cardStyles?.softAfterOpacity ?? 1)).toBeLessThanOrEqual(0.2);
+    expect(Number(cardStyles?.holoBeforeOpacity ?? 0)).toBeGreaterThanOrEqual(0.85);
+    expect(Number(cardStyles?.holoAfterOpacity ?? 0)).toBeGreaterThanOrEqual(0.89);
+    expect(cardStyles?.cssText).toContain(".card-soft::after");
+    expect(cardStyles?.cssText).toContain(".card-holo::after");
+    expect(cardStyles?.cssText).toContain("@keyframes rainbowFlowShift");
+    expect(cardStyles?.cssText).toContain("@keyframes cardShadowDrift");
+    expect(cardStyles?.cssText).toMatch(/\.card-soft::after[\s\S]*opacity:\s*0\.15/);
+    expect(cardStyles?.cssText).toMatch(/\.card-soft::before[\s\S]*opacity:\s*0\.165/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::before[\s\S]*opacity:\s*0\.88/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::after[\s\S]*opacity:\s*0\.9/);
+    expect(cardStyles?.cssText).toMatch(/\.card[\s\S]*overflow:\s*hidden/);
+    expect(cardStyles?.cssText).toMatch(/\.card-soft::after[\s\S]*inset:\s*0/);
+    expect(cardStyles?.cssText).toMatch(/\.card-soft::before[\s\S]*inset:\s*0/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::before[\s\S]*inset:\s*0/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::after[\s\S]*inset:\s*0/);
+    expect(cardStyles?.cssText).toContain(".stagger-container .stagger-item:not(.card)::after");
+    expect(cardStyles?.cssText).toContain(".stagger-container .stagger-item:not(.card).revealed::after");
+    expect(cardStyles?.cssText).toContain(".stagger-container .stagger-item.card::after");
   });
 });

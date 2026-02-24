@@ -14,19 +14,20 @@ export default function ContactPage() {
           </p>
           <img
             className="stagger-item"
-            src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/IMG_4570.heic"
+            src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/READY%202%20GO.jpg"
             alt="Founder portrait"
             style={{
               width: "550px",
-              height: "550px",
-              objectFit: "cover",
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "contain",
               borderRadius: "14px",
               marginTop: "12px",
             }}
           />
         </StaggerContainer>
         <ScrollReveal className="from-right" delay={200}>
-          <div className="card">
+          <div className="card card-soft">
             <h2 style={{ marginBottom: "16px" }}>Submit an inquiry</h2>
             <ContactForm />
           </div>

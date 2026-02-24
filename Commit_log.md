@@ -49,3 +49,7 @@
 - Reorganize services page into Development & Design and Marketing & Content sections; add MVVP App Development card to Development section.
 - Fix review avatar image URL in `app/services/page.tsx` to use raw GitHub URL for correct display.
 - Add regression test in `tests/site.spec.ts` for scroll-reveal shimmer sweep keyframes and revealed-state pseudo-element styling.
+- Introduce reusable `.card-soft` and `.card-holo` visual variants in `app/globals.css`, and apply them across `app/page.tsx`, `app/services/page.tsx`, and `app/contact-us/page.tsx`.
+- Correct the services offer title typo from "MVVP" to "MVP" in `app/services/page.tsx`.
+- Replace contact founder image source with `READY 2 GO.jpg` raw GitHub URL and switch image sizing to `object-fit: contain` plus responsive `height: auto` in `app/contact-us/page.tsx` to prevent cropping.
+- Expand regression coverage in `tests/site.spec.ts` for card-variant styling expectations and contact-page founder image source/sizing behavior.

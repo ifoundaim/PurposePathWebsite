@@ -42,7 +42,7 @@ export default function HomePage() {
                 />
               </div>
             </ScrollReveal>
-            <StaggerContainer className="card mvp-copy" staggerDelay={120}>
+            <StaggerContainer className="card card-soft mvp-copy" staggerDelay={120}>
               <p className="eyebrow stagger-item fall">MVP animation</p>
               <h2 className="title stagger-item">
                 Made using Suno, ChatGPT image gen, Vidu video gen, &amp; CapCut.
