@@ -168,13 +168,26 @@ test.describe("PurposePath site", () => {
     });
 
     expect(holoStyles).toContain("@keyframes holoBorderFlow");
+    expect(holoStyles).toContain("@keyframes holoGlowFlow");
     expect(holoStyles).toMatch(/background-position:\s*0%\s*center,\s*100%\s*center/);
     expect(holoStyles).toMatch(/background-position:\s*100%\s*center,\s*0%\s*center/);
-    expect(holoStyles).toContain("hue-rotate(360deg)");
-    expect(holoStyles).toContain("@keyframes holoGlowFlow");
-    expect(holoStyles).toContain("blur(var(--holo-glow-blur)) hue-rotate(0deg)");
-    expect(holoStyles).toContain("blur(var(--holo-glow-blur)) hue-rotate(360deg)");
     expect(holoStyles).toContain("/ 250% 250%");
     expect(holoStyles).toContain("/ 220% 220%");
+
+    const animationMeta = await page.locator(".button").first().evaluate((button) => {
+      const before = getComputedStyle(button, "::before");
+      const after = getComputedStyle(button, "::after");
+      return {
+        beforeName: before.animationName,
+        beforeDirection: before.animationDirection,
+        afterName: after.animationName,
+        afterDirection: after.animationDirection,
+      };
+    });
+
+    expect(animationMeta.beforeName).toContain("holoBorderFlow");
+    expect(animationMeta.afterName).toContain("holoGlowFlow");
+    expect(animationMeta.beforeDirection).toContain("alternate");
+    expect(animationMeta.afterDirection).toContain("alternate");
   });
 });

@@ -37,6 +37,8 @@
 - Update homepage section wrappers in `app/page.tsx` to apply `section-prism-warm`, `section-prism-cool`, and `section-prism-lilac` atmosphere classes.
 - Fix holographic border animation looping in `app/globals.css` by using repeating border gradient layers and seamless keyframe endpoints (`background-position` and hue cycle) to remove end-of-cycle snap/reset artifacts.
 - Add regression coverage in `tests/site.spec.ts` to assert seamless holographic keyframe endpoints and expected gradient tiling configuration.
+- Remove remaining holographic loop snap by switching border/glow pseudo-element animations to `alternate` direction and eliminating keyframe hue-rotation transitions in `app/globals.css`.
+- Strengthen holographic regression checks in `tests/site.spec.ts` by asserting runtime pseudo-element animation direction/names in addition to keyframe and tiling expectations.
 - Replace direct subscribe submission in `components/SubscribeForm.tsx` with client-side POST to `/api/subscribe`, adding inline loading, success, and error feedback states.
 - Add `app/api/subscribe/route.ts` with server-side email validation, safe Formspree forwarding via `lib/forms.ts`, and resilient JSON responses for misconfiguration/upstream failures.
 - Add hero media fallback handling in `components/HeroVideo.tsx` so failed video loads render a dedicated fallback shell and hide the audio toggle.

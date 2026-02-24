@@ -304,7 +304,7 @@ main {
   pointer-events: none;
   opacity: var(--holo-border-opacity-idle);
   z-index: 0;
-  animation: holoBorderFlow 6s linear infinite;
+  animation: holoBorderFlow 6s linear infinite alternate;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -356,7 +356,7 @@ main {
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: holoGlowFlow 14s linear infinite;
+  animation: holoGlowFlow 14s linear infinite alternate;
   transition: opacity 0.22s ease;
 }
 
@@ -935,13 +935,11 @@ label {
     background-position:
       0% 50%,
       100% 50%;
-    filter: hue-rotate(0deg);
   }
   100% {
     background-position:
       100% 50%,
       0% 50%;
-    filter: hue-rotate(360deg);
   }
 }
 
@@ -950,13 +948,13 @@ label {
     background-position:
       0% 50%,
       100% 50%;
-    filter: blur(var(--holo-glow-blur)) hue-rotate(0deg);
+    filter: blur(var(--holo-glow-blur));
   }
   100% {
     background-position:
       100% 50%,
       0% 50%;
-    filter: blur(var(--holo-glow-blur)) hue-rotate(360deg);
+    filter: blur(var(--holo-glow-blur));
   }
 }
 
