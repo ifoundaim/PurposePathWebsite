@@ -65,3 +65,5 @@
 - Expand Playwright regression coverage in `tests/site.spec.ts` for RouteForge nav/content, legacy-route redirect behavior, and waitlist CTA jump-to-subscribe interaction.
 - Add a two-column RouteForge intro layout in `app/illustration-market/page.tsx` with narrative copy on the left and embedded YouTube video (`csNdmEslXU0`) on the right.
 - Add responsive iframe styling in `app/globals.css` under `.video-frame iframe` to preserve a 16:9 aspect ratio and clean borderless rendering.
+- Replace footer `Privacy Policy` link with internal `RouteForge` link in `components/Footer.tsx` pointing to `/illustration-market`.
+- Set contact inquiry default Formspree endpoint to `https://formspree.io/f/mgolrlpe` in `lib/forms.ts`, keeping subscribe and inquiry endpoints distinct.

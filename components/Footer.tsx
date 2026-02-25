@@ -27,7 +27,7 @@ export default function Footer() {
             <Link href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
               Throne
             </Link>
-            <Link href="#">Privacy Policy</Link>
+            <Link href="/illustration-market">RouteForge</Link>
           </div>
         </ScrollReveal>
       </div>
