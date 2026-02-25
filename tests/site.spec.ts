@@ -138,6 +138,9 @@ test.describe("PurposePath site", () => {
     await expect
       .poll(async () => heroVideo.evaluate((video) => video.paused))
       .toBe(false);
+    await expect
+      .poll(async () => heroVideo.evaluate((video) => video.muted))
+      .toBe(true);
 
     const initialMuted = await heroVideo.evaluate((video) => video.muted);
     await audioToggle.click();

@@ -32,21 +32,8 @@ export default function HeroVideo() {
       }
     };
 
-    // Best effort: switch to 50% sound on load when policy allows.
-    const tryEnableSound = async () => {
-      try {
-        video.muted = false;
-        await video.play();
-        setIsMuted(false);
-      } catch {
-        video.muted = true;
-        setIsMuted(true);
-      }
-    };
-
     void (async () => {
       await startPlayback();
-      await tryEnableSound();
     })();
   }, [hasVideoError]);
 

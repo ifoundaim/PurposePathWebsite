@@ -67,3 +67,5 @@
 - Add responsive iframe styling in `app/globals.css` under `.video-frame iframe` to preserve a 16:9 aspect ratio and clean borderless rendering.
 - Replace footer `Privacy Policy` link with internal `RouteForge` link in `components/Footer.tsx` pointing to `/illustration-market`.
 - Set contact inquiry default Formspree endpoint to `https://formspree.io/f/mgolrlpe` in `lib/forms.ts`, keeping subscribe and inquiry endpoints distinct.
+- Keep homepage hero video muted by default in `components/HeroVideo.tsx` by removing auto-unmute-on-load logic.
+- Add regression coverage in `tests/site.spec.ts` asserting initial hero video `muted` state is `true` at page load.
