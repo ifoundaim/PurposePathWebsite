@@ -2,6 +2,11 @@
 
 import { FormEvent, useState } from "react";
 import RainbowFlowText from "@/components/RainbowFlowText";
+import { subscribeFormEndpoint } from "@/lib/forms";
+
+function isConfiguredEndpoint(endpoint: string) {
+  return !endpoint.includes("REPLACE_WITH_SUBSCRIBE_FORM_ID");
+}
 
 export default function SubscribeForm() {
   const [email, setEmail] = useState("");
@@ -25,13 +30,25 @@ export default function SubscribeForm() {
     setFeedback(null);
 
     try {
-      const response = await fetch("/api/subscribe", {
+      if (!isConfiguredEndpoint(subscribeFormEndpoint)) {
+        throw new Error("Subscription is not configured yet.");
+      }
+
+      const response = await fetch(subscribeFormEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({ email: normalizedEmail }),
       });
 
-      const payload = (await response.json()) as { message?: string };
+      let payload: { message?: string } = {};
+      try {
+        payload = (await response.json()) as { message?: string };
+      } catch {
+        payload = {};
+      }
 
       if (!response.ok) {
         throw new Error(payload.message || "Unable to subscribe right now.");
@@ -53,7 +70,7 @@ export default function SubscribeForm() {
   };
 
   return (
-    <form action="/api/subscribe" method="POST" onSubmit={handleSubmit} noValidate>
+    <form action={subscribeFormEndpoint} method="POST" onSubmit={handleSubmit} noValidate>
       <label>
         Your Email
         <input

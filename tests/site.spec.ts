@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 
+const formspreeSubscribeRoute = /https:\/\/formspree\.io\/f\/.*/;
+
 test.describe("PurposePath site", () => {
   test("primary navigation routes to key pages", async ({ page }) => {
     await page.goto("/");
@@ -28,7 +30,7 @@ test.describe("PurposePath site", () => {
 
     await page.goto("/");
     const subscribeFormAction = await page.locator("footer form").getAttribute("action");
-    expect(subscribeFormAction).toBe("/api/subscribe");
+    expect(subscribeFormAction).toContain("formspree.io/f/");
   });
 
   test("contact founder image uses uncropped contain sizing", async ({ page }) => {
@@ -58,7 +60,7 @@ test.describe("PurposePath site", () => {
   });
 
   test("subscribe form shows inline success and error states", async ({ page }) => {
-    await page.route("**/api/subscribe", async (route) => {
+    await page.route(formspreeSubscribeRoute, async (route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
@@ -78,8 +80,8 @@ test.describe("PurposePath site", () => {
     await subscribeButton.click();
     await expect(page.getByText("Thanks for subscribing!")).toBeVisible();
 
-    await page.unroute("**/api/subscribe");
-    await page.route("**/api/subscribe", async (route) => {
+    await page.unroute(formspreeSubscribeRoute);
+    await page.route(formspreeSubscribeRoute, async (route) => {
       await route.fulfill({
         status: 502,
         contentType: "application/json",

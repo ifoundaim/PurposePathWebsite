@@ -53,3 +53,7 @@
 - Correct the services offer title typo from "MVVP" to "MVP" in `app/services/page.tsx`.
 - Replace contact founder image source with `READY 2 GO.jpg` raw GitHub URL and switch image sizing to `object-fit: contain` plus responsive `height: auto` in `app/contact-us/page.tsx` to prevent cropping.
 - Expand regression coverage in `tests/site.spec.ts` for card-variant styling expectations and contact-page founder image source/sizing behavior.
+- Switch subscription submission in `components/SubscribeForm.tsx` from `/api/subscribe` to direct Formspree posting via `subscribeFormEndpoint`, preserving inline validation/feedback UX for static-hosted deployment.
+- Set the subscribe default endpoint to `https://formspree.io/f/xgolrloo` in `lib/forms.ts` so exported static builds remain wired when env vars are absent.
+- Update subscribe-related assertions/mocks in `tests/site.spec.ts` to validate direct Formspree form action and mocked Formspree request handling.
+- Add project setup docs in `README.md` and add a tracked `/.env.example`; update `.gitignore` to keep env files ignored while allowing `/.env.example` to be committed.
