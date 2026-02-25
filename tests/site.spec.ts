@@ -5,8 +5,7 @@ const formspreeSubscribeRoute = /https:\/\/formspree\.io\/f\/.*/;
 test.describe("PurposePath site", () => {
   test("primary navigation routes to key pages", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("link", { name: "Illustration Marketplace" }))
-      .toBeVisible();
+    await expect(page.getByRole("link", { name: "RouteForge" })).toBeVisible();
 
     await page.getByRole("link", { name: "Skill Offers" }).click();
     await expect(page.getByRole("heading", { name: "Skill Offers" }))
@@ -15,8 +14,39 @@ test.describe("PurposePath site", () => {
     await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
     await expect(page.getByRole("heading", { name: "Contact" })).toBeVisible();
 
-    await page.getByRole("link", { name: "Illustration Marketplace" }).click();
-    await expect(page.getByRole("heading", { name: "In Dev" })).toBeVisible();
+    await page.getByRole("link", { name: "RouteForge" }).click();
+    await expect(
+      page.getByRole("heading", {
+        name: "License styles. Train legally. Ship faster.",
+      }),
+    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "What RouteForge is for" })).toBeVisible();
+  });
+
+  test("legacy illustration path redirects to canonical RouteForge page", async ({ page }) => {
+    await page.goto("/illistration-market");
+    await expect(page).toHaveURL(/\/illustration-market\/?$/);
+    await expect(page.getByRole("heading", { name: "What RouteForge is for" })).toBeVisible();
+  });
+
+  test("waiting list CTA jumps to subscribe form at page bottom", async ({ page }) => {
+    await page.goto("/illustration-market");
+
+    await page
+      .getByRole("link", { name: "[Subscribe to join the waiting list]" })
+      .click();
+
+    const subscribeSection = page.locator("#waitlist-subscribe");
+    const subscribeButton = page
+      .locator("#waitlist-subscribe")
+      .getByRole("button", { name: "Subscribe" });
+    const emailInput = page
+      .locator("#waitlist-subscribe")
+      .getByRole("textbox", { name: "Your Email" });
+
+    await expect(subscribeSection).toBeInViewport();
+    await expect(emailInput).toBeVisible();
+    await expect(subscribeButton).toBeVisible();
   });
 
   test("forms are wired and required fields exist", async ({ page }) => {

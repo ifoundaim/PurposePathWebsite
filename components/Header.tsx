@@ -5,7 +5,7 @@ import { useState } from "react";
 import RainbowFlowText from "@/components/RainbowFlowText";
 
 const navLinks = [
-  { label: "Illustration Marketplace", href: "/illistration-market" },
+  { label: "RouteForge", href: "/illustration-market" },
   { label: "Skill Offers", href: "/services" },
   { label: "Throne", href: "https://throne.com/ifoundaim" },
   { label: "Contact", href: "/contact-us" },

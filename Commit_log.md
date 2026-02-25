@@ -58,3 +58,8 @@
 - Update subscribe-related assertions/mocks in `tests/site.spec.ts` to validate direct Formspree form action and mocked Formspree request handling.
 - Add project setup docs in `README.md` and add a tracked `/.env.example`; update `.gitignore` to keep env files ignored while allowing `/.env.example` to be committed.
 - Add latest Playwright run output under `test-results/` to capture current local test execution artifacts.
+- Rename header nav label to `RouteForge`, update its canonical route to `/illustration-market`, and keep `/illistration-market` as a redirect compatibility route.
+- Replace the old in-dev marketplace page with full RouteForge narrative copy in `app/illustration-market/page.tsx`, including both waitlist CTAs and PurposePath ecosystem sections.
+- Add waitlist anchor behavior by linking both RouteForge waitlist CTAs to `#waitlist-subscribe` and tagging the footer subscribe area in `components/Footer.tsx`.
+- Reuse holographic rainbow menu-label text styling for both inline RouteForge waitlist links in `app/illustration-market/page.tsx` and `app/globals.css` (without converting them into buttons).
+- Expand Playwright regression coverage in `tests/site.spec.ts` for RouteForge nav/content, legacy-route redirect behavior, and waitlist CTA jump-to-subscribe interaction.

@@ -4,7 +4,7 @@ import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="waitlist-subscribe">
       <div className="container grid grid-2">
         <StaggerContainer staggerDelay={100}>
           <p className="eyebrow stagger-item fall">Stay in the loop</p>

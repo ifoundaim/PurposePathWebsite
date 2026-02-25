@@ -456,8 +456,25 @@ main {
     0 0 16px rgba(233, 179, 255, 0.12);
 }
 
+.holo-inline-link .menu-label {
+  text-shadow:
+    var(--holo-label-micro-shadow),
+    0 0 8px rgba(142, 197, 255, 0.22),
+    0 0 12px rgba(141, 240, 221, 0.16),
+    0 0 16px rgba(233, 179, 255, 0.12);
+}
+
 .button .button-label,
 .menu-button .menu-label {
+  display: inline-flex;
+  gap: 0.01em;
+  font-size: 1.08em;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.24))
+    drop-shadow(0 1px 1.5px rgba(25, 26, 39, 0.16));
+}
+
+.holo-inline-link .menu-label {
   display: inline-flex;
   gap: 0.01em;
   font-size: 1.08em;
@@ -473,7 +490,8 @@ main {
 
 @supports (-webkit-background-clip: text) {
   .button .button-label .rainbow-flow-char,
-  .menu-button .menu-label .rainbow-flow-char {
+  .menu-button .menu-label .rainbow-flow-char,
+  .holo-inline-link .menu-label .rainbow-flow-char {
     background-image: var(--rainbow-text-loop);
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -486,9 +504,15 @@ main {
   .button:hover .rainbow-flow-char,
   .button:focus-visible .rainbow-flow-char,
   .menu-button:hover .rainbow-flow-char,
-  .menu-button:focus-visible .rainbow-flow-char {
+  .menu-button:focus-visible .rainbow-flow-char,
+  .holo-inline-link:hover .rainbow-flow-char,
+  .holo-inline-link:focus-visible .rainbow-flow-char {
     animation-duration: 1.9s;
   }
+}
+
+.holo-inline-link {
+  text-decoration: none;
 }
 
 .button:hover {
