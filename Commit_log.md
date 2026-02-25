@@ -57,3 +57,4 @@
 - Set the subscribe default endpoint to `https://formspree.io/f/xgolrloo` in `lib/forms.ts` so exported static builds remain wired when env vars are absent.
 - Update subscribe-related assertions/mocks in `tests/site.spec.ts` to validate direct Formspree form action and mocked Formspree request handling.
 - Add project setup docs in `README.md` and add a tracked `/.env.example`; update `.gitignore` to keep env files ignored while allowing `/.env.example` to be committed.
+- Add latest Playwright run output under `test-results/` to capture current local test execution artifacts.
