@@ -63,3 +63,5 @@
 - Add waitlist anchor behavior by linking both RouteForge waitlist CTAs to `#waitlist-subscribe` and tagging the footer subscribe area in `components/Footer.tsx`.
 - Reuse holographic rainbow menu-label text styling for both inline RouteForge waitlist links in `app/illustration-market/page.tsx` and `app/globals.css` (without converting them into buttons).
 - Expand Playwright regression coverage in `tests/site.spec.ts` for RouteForge nav/content, legacy-route redirect behavior, and waitlist CTA jump-to-subscribe interaction.
+- Add a two-column RouteForge intro layout in `app/illustration-market/page.tsx` with narrative copy on the left and embedded YouTube video (`csNdmEslXU0`) on the right.
+- Add responsive iframe styling in `app/globals.css` under `.video-frame iframe` to preserve a 16:9 aspect ratio and clean borderless rendering.

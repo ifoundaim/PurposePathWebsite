@@ -6,26 +6,40 @@ export default function IllustrationMarketPage() {
     <section className="section">
       <div className="container">
         <StaggerContainer staggerDelay={120}>
-          <p className="eyebrow stagger-item fall">RouteForge</p>
-          <h1 className="title stagger-item fall">
-            License styles. Train legally. Ship faster.
-          </h1>
-          <p className="subtitle stagger-item">
-            RouteForge is an illustrator marketplace where artists license exclusive AI
-            training rights to their work-with protections against unauthorized
-            scraping/training and royalty paths when productions use content generated
-            from their licensed style.
-          </p>
-          <p className="subtitle stagger-item">
-            For producers, RouteForge is the simplest way to get legitimate rights to
-            train on an artist&apos;s style and use it for commercial pipelines-without
-            guessing, backchannels, or legal ambiguity.
-          </p>
-          <p className="subtitle stagger-item">
-            <a className="holo-inline-link" href="#waitlist-subscribe">
-              <RainbowFlowText className="menu-label" text="[Subscribe to join the waitlist]" />
-            </a>
-          </p>
+          <div className="mvp-grid">
+            <div className="mvp-copy">
+              <p className="eyebrow stagger-item fall">RouteForge</p>
+              <h1 className="title stagger-item fall">
+                License styles. Train legally. Ship faster.
+              </h1>
+              <p className="subtitle stagger-item">
+                RouteForge is an illustrator marketplace where artists license exclusive AI
+                training rights to their work-with protections against unauthorized
+                scraping/training and royalty paths when productions use content generated
+                from their licensed style.
+              </p>
+              <p className="subtitle stagger-item">
+                For producers, RouteForge is the simplest way to get legitimate rights to
+                train on an artist&apos;s style and use it for commercial pipelines-without
+                guessing, backchannels, or legal ambiguity.
+              </p>
+              <p className="subtitle stagger-item">
+                <a className="holo-inline-link" href="#waitlist-subscribe">
+                  <RainbowFlowText className="menu-label" text="[Subscribe to join the waitlist]" />
+                </a>
+              </p>
+            </div>
+            <div className="video-frame stagger-item">
+              <iframe
+                src="https://www.youtube.com/embed/csNdmEslXU0"
+                title="RouteForge intro video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
 
           <h2 className="title stagger-item" style={{ marginTop: "28px" }}>
             What RouteForge is for
