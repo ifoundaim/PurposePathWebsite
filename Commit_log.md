@@ -1,3 +1,10 @@
+## 2026-04-25
+
+- Add Susan Rheinman's Seeds, Roots, & Shoots testimonial to `app/services/page.tsx` with matching client-card styling and tuned avatar cropping.
+- Apply client-card paced holographic hover movement to all Skill Offers cards in `app/services/page.tsx` and `app/globals.css` with softer offer-card intensity.
+- Update `tests/site.spec.ts` to expect the additional services testimonial card.
+- Refresh generated Next.js route type import in `next-env.d.ts` after the production build.
+
 ## 2026-02-22
 
 - Publish homepage copy updates in `app/page.tsx`.

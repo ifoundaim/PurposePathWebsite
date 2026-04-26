@@ -287,7 +287,7 @@ test.describe("PurposePath site", () => {
     await expect(offerCards).toHaveCount(4);
 
     const testimonialCard = page.locator(".card.card-holo.review-card");
-    await expect(testimonialCard).toHaveCount(1);
+    await expect(testimonialCard).toHaveCount(2);
   });
 
   test("card variants keep holographic shadow inside bounds with correct intensity", async ({ page }) => {

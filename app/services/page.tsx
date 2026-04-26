@@ -18,7 +18,7 @@ export default function ServicesPage() {
           <p className="eyebrow" style={{ marginTop: "48px" }}>Development &amp; Design</p>
         </ScrollReveal>
         <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
-          <div className="card card-soft stagger-item">
+          <div className="card card-soft service-offer-card stagger-item">
             <h3>Website Design &amp; Development (starting at $1,997)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>Custom Webflow design</li>
@@ -28,7 +28,7 @@ export default function ServicesPage() {
               <li>2 revision rounds</li>
             </ul>
           </div>
-          <div className="card card-soft stagger-item">
+          <div className="card card-soft service-offer-card stagger-item">
             <h3>Fully Shippable MVP App Development (starting at $4,997)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>1-week discovery + product scope</li>
@@ -44,7 +44,7 @@ export default function ServicesPage() {
           <p className="eyebrow" style={{ marginTop: "48px" }}>Marketing &amp; Content</p>
         </ScrollReveal>
         <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
-          <div className="card card-soft stagger-item">
+          <div className="card card-soft service-offer-card stagger-item">
             <h3>Content Creation Bundle ‍ (starting at $797/mo)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>4 social media designs/mo</li>
@@ -54,7 +54,7 @@ export default function ServicesPage() {
               <li>Monthly planning call</li>
             </ul>
           </div>
-          <div className="card card-soft stagger-item">
+          <div className="card card-soft service-offer-card stagger-item">
             <h3>Targeted Ad Management ‍ (starting at $997/mo)</h3>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
               <li>Facebook/Instagram setup</li>
@@ -95,6 +95,46 @@ export default function ServicesPage() {
               weeks, but he also had a positive attitude throughout the entire
               process. Any business owner / founder is in great hands with
               Matthew.&quot;
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal className="scale-up" delay={240}>
+          <div
+            className="card card-holo review-card"
+            style={{ marginTop: "24px" }}
+          >
+            <div className="review-header">
+              <img
+                className="review-avatar"
+                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/d2056eed53cf6ff76153748599f6e291c9a53348/Secure%20the%20expertise%20of%20a%20premium%20CFO%20for%20your%20pre-seed%20journey.%20Start%20today%20%282%29.jpg"
+                alt="Susan Rheinman"
+                style={{ objectPosition: "center 32%" }}
+                loading="lazy"
+              />
+              <div>
+                <p className="review-name">Susan Rheinman</p>
+                <p className="review-role">Founder of Seeds, Roots, &amp; Shoots</p>
+              </div>
+            </div>
+            <p className="review-quote">
+              &quot;I met Matthew doing community work, and was impressed by his
+              dedication, honesty, and kindness.&quot;
+            </p>
+            <p className="review-body">
+              &quot;He seemed to have a talent for technology and design so I asked
+              him to build a new website for my business. He did a beautiful job.
+              It was his first website using SquareSpace and he worked
+              persistently with the company until it looked and worked just how
+              we wanted. He is always eager to keep learning and growing. He can
+              see the potential of a company and works with vision, strongly
+              motivated to do good in the world. He likes to build teams and
+              make alliances where everyone benefits. He helped me find a
+              wonderful photographer to take pictures for the website and for
+              seasonal social media. We worked together on social media posts
+              and emails to boost traffic to the website. I&apos;m grateful for
+              Matthew creating a beautiful website and for his vision of what my
+              company can become.&quot;
             </p>
           </div>
         </ScrollReveal>
