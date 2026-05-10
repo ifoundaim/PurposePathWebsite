@@ -239,8 +239,8 @@ test.describe("PurposePath site", () => {
     expect(holoStyles).toContain("@keyframes goldSurfaceFlow");
     expect(holoStyles).toMatch(/background-position:\s*0%\s*center,\s*100%\s*center/);
     expect(holoStyles).toMatch(/background-position:\s*200%\s*center,\s*300%\s*center/);
-    expect(holoStyles).toContain("/ 300% 300%");
-    expect(holoStyles).toContain("/ 280% 280%");
+    expect(holoStyles).toMatch(/background-position:\s*200%\s*center;\s*\}/);
+    expect(holoStyles).toContain("/ 200% 100%");
 
     const animationMeta = await page.locator(".button").first().evaluate((button) => {
       const before = getComputedStyle(button, "::before");
