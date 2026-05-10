@@ -5,6 +5,7 @@
 - Rebalance page section backgrounds across homepage, services, contact, and RouteForge pages using consistent paper, champagne, and gold-wash section treatments.
 - Update `tests/site.spec.ts` coverage for the matte logo, gold palette, smoother shimmer loop behavior, and softened testimonial card effects.
 - Point the header logo and metadata icons to the verified raw GitHub image URL, and remove dark stops from scroll reveal shimmer overlays for a cleaner gold-only sweep.
+- Add a transparent PurposePath mark asset, bundle it through `next/image` for reliable preview/export rendering, and enlarge the header mark to better match the Contact button height.
 
 ## 2026-04-25
 

@@ -9,7 +9,7 @@ test.describe("PurposePath site", () => {
     await expect(homeLogo).toBeVisible();
     await expect(homeLogo.locator("img")).toHaveAttribute(
       "src",
-      /raw\.githubusercontent\.com\/ifoundaim\/PurposePathWebsite\/main\/public\/brand\/purposepath-mark-matte\.png/,
+      /purposepath-mark-transparent/,
     );
     await expect(page.getByRole("navigation").getByRole("link", { name: "RouteForge" }))
       .toBeVisible();

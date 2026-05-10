@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 const purposePathLogoUrl =
-  "https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/public/brand/purposepath-mark-matte.png";
+  "https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/public/brand/purposepath-mark-transparent.png";
 
 export const metadata: Metadata = {
   title: "PurposePath Multimedia",

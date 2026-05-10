@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import RainbowFlowText from "@/components/RainbowFlowText";
+import purposePathMark from "@/public/brand/purposepath-mark-transparent.png";
 
 const navLinks = [
   { label: "RouteForge", href: "/illustration-market" },
@@ -11,9 +12,6 @@ const navLinks = [
   { label: "Throne", href: "https://throne.com/ifoundaim" },
   { label: "Contact", href: "/contact-us" },
 ];
-
-const purposePathLogoUrl =
-  "https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/public/brand/purposepath-mark-matte.png";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,10 +22,10 @@ export default function Header() {
         <Link className="nav-logo" href="/" aria-label="PurposePath home">
           <Image
             className="nav-logo-mark"
-            src={purposePathLogoUrl}
+            src={purposePathMark}
             alt=""
-            width={34}
-            height={34}
+            width={46}
+            height={46}
             priority
           />
           <span className="nav-logo-wordmark">PurposePath</span>
