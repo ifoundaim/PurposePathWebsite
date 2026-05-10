@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import RainbowFlowText from "@/components/RainbowFlowText";
@@ -17,8 +18,16 @@ export default function Header() {
   return (
     <header className="nav">
       <div className="container nav-inner">
-        <Link className="nav-logo" href="/">
-          PurposePath
+        <Link className="nav-logo" href="/" aria-label="PurposePath home">
+          <Image
+            className="nav-logo-mark"
+            src="/brand/purposepath-mark-matte.png"
+            alt=""
+            width={34}
+            height={34}
+            priority
+          />
+          <span className="nav-logo-wordmark">PurposePath</span>
         </Link>
         <nav className="nav-links">
           {navLinks.map((link) => (

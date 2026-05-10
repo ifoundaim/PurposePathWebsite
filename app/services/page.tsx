@@ -2,7 +2,7 @@ import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
 
 export default function ServicesPage() {
   return (
-    <section className="section">
+    <section className="section section-prism-cool">
       <div className="container">
         <StaggerContainer staggerDelay={100}>
           <p className="eyebrow stagger-item fall">Skill Offers</p>

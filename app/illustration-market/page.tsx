@@ -3,7 +3,7 @@ import { StaggerContainer } from "@/components/ScrollReveal";
 
 export default function IllustrationMarketPage() {
   return (
-    <section className="section">
+    <section className="section section-prism-warm">
       <div className="container">
         <StaggerContainer staggerDelay={120}>
           <div className="mvp-grid">

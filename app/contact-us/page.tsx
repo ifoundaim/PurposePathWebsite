@@ -3,7 +3,7 @@ import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
 
 export default function ContactPage() {
   return (
-    <section className="section">
+    <section className="section section-prism-lilac">
       <div className="container grid grid-2">
         <StaggerContainer staggerDelay={120}>
           <p className="eyebrow stagger-item fall">Talk to the Founder</p>

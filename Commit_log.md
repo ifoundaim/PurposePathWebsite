@@ -1,3 +1,10 @@
+## 2026-05-10
+
+- Replace the header brand with a matte PurposePath mark asset and register matching site icons in `components/Header.tsx`, `app/layout.tsx`, and `public/brand/`.
+- Convert rainbow holographic surfaces to the gold/ink brand palette in `app/globals.css`, including smoother gold button/card shimmer and solid dark button text for readability.
+- Rebalance page section backgrounds across homepage, services, contact, and RouteForge pages using consistent paper, champagne, and gold-wash section treatments.
+- Update `tests/site.spec.ts` coverage for the matte logo, gold palette, smoother shimmer loop behavior, and softened testimonial card effects.
+
 ## 2026-04-25
 
 - Add Susan Rheinman's Seeds, Roots, & Shoots testimonial to `app/services/page.tsx` with matching client-card styling and tuned avatar cropping.

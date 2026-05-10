@@ -5,7 +5,11 @@ const formspreeSubscribeRoute = /https:\/\/formspree\.io\/f\/.*/;
 test.describe("PurposePath site", () => {
   test("primary navigation routes to key pages", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("link", { name: "RouteForge" })).toBeVisible();
+    const homeLogo = page.getByRole("link", { name: "PurposePath home" });
+    await expect(homeLogo).toBeVisible();
+    await expect(homeLogo.locator("img")).toHaveAttribute("src", /purposepath-mark-matte\.png/);
+    await expect(page.getByRole("navigation").getByRole("link", { name: "RouteForge" }))
+      .toBeVisible();
 
     await page.getByRole("link", { name: "Skill Offers" }).click();
     await expect(page.getByRole("heading", { name: "Skill Offers" }))
@@ -14,7 +18,7 @@ test.describe("PurposePath site", () => {
     await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
     await expect(page.getByRole("heading", { name: "Contact" })).toBeVisible();
 
-    await page.getByRole("link", { name: "RouteForge" }).click();
+    await page.getByRole("navigation").getByRole("link", { name: "RouteForge" }).click();
     await expect(
       page.getByRole("heading", {
         name: "License styles. Train legally. Ship faster.",
@@ -229,11 +233,11 @@ test.describe("PurposePath site", () => {
     });
 
     expect(holoStyles).toContain("@keyframes holoBorderFlow");
-    expect(holoStyles).toContain("@keyframes holoGlowFlow");
+    expect(holoStyles).toContain("@keyframes goldSurfaceFlow");
     expect(holoStyles).toMatch(/background-position:\s*0%\s*center,\s*100%\s*center/);
-    expect(holoStyles).toMatch(/background-position:\s*100%\s*center,\s*0%\s*center/);
-    expect(holoStyles).toContain("/ 250% 250%");
-    expect(holoStyles).toContain("/ 220% 220%");
+    expect(holoStyles).toMatch(/background-position:\s*200%\s*center,\s*300%\s*center/);
+    expect(holoStyles).toContain("/ 300% 300%");
+    expect(holoStyles).toContain("/ 280% 280%");
 
     const animationMeta = await page.locator(".button").first().evaluate((button) => {
       const before = getComputedStyle(button, "::before");
@@ -241,15 +245,15 @@ test.describe("PurposePath site", () => {
       return {
         beforeName: before.animationName,
         beforeDirection: before.animationDirection,
-        afterName: after.animationName,
-        afterDirection: after.animationDirection,
+        buttonAnimation: getComputedStyle(button).animationName,
+        afterContent: after.content,
       };
     });
 
     expect(animationMeta.beforeName).toContain("holoBorderFlow");
-    expect(animationMeta.afterName).toContain("holoGlowFlow");
-    expect(animationMeta.beforeDirection).toContain("alternate");
-    expect(animationMeta.afterDirection).toContain("alternate");
+    expect(animationMeta.beforeDirection).toContain("normal");
+    expect(animationMeta.buttonAnimation).toContain("goldSurfaceFlow");
+    expect(animationMeta.afterContent).toBe("none");
   });
 
   test("scroll reveal elements include shimmer sweep on revealed state", async ({ page }) => {
@@ -278,6 +282,30 @@ test.describe("PurposePath site", () => {
     expect(shimmerStyles).toContain("@keyframes cardShadowDrift");
     expect(shimmerStyles).toContain(".card-soft");
     expect(shimmerStyles).toContain(".card-holo");
+  });
+
+  test("brand shimmer palette stays within the gold logo range", async ({ page }) => {
+    await page.goto("/");
+
+    const palette = await page.evaluate(() => {
+      const rootStyles = getComputedStyle(document.documentElement);
+      return {
+        goldBase: rootStyles.getPropertyValue("--gold-base"),
+        goldDeep: rootStyles.getPropertyValue("--gold-deep"),
+        rainbowTextLoop: rootStyles.getPropertyValue("--rainbow-text-loop"),
+        cardSpectrum: rootStyles.getPropertyValue("--card-holo-spectrum-loop"),
+      };
+    });
+
+    expect(palette.goldBase.trim()).toBe("#ddc58a");
+    expect(palette.goldDeep.trim()).toBe("#c2ac84");
+    expect(palette.rainbowTextLoop).toContain("#0e0f11");
+    expect(palette.rainbowTextLoop).toContain("#23221f");
+    expect(palette.rainbowTextLoop).toContain("#ddc58a");
+    expect(palette.cardSpectrum).toContain("#ddc58a");
+    expect(palette.cardSpectrum).toContain("#c2ac84");
+    expect(palette.cardSpectrum).not.toContain("#6eb7ff");
+    expect(palette.cardSpectrum).not.toContain("#d786ff");
   });
 
   test("services page maps soft and holo card variants correctly", async ({ page }) => {
@@ -369,16 +397,16 @@ test.describe("PurposePath site", () => {
     ).toBeTruthy();
     expect(Number(cardStyles?.softBeforeOpacity ?? 1)).toBeLessThanOrEqual(0.2);
     expect(Number(cardStyles?.softAfterOpacity ?? 1)).toBeLessThanOrEqual(0.2);
-    expect(Number(cardStyles?.holoBeforeOpacity ?? 0)).toBeGreaterThanOrEqual(0.85);
-    expect(Number(cardStyles?.holoAfterOpacity ?? 0)).toBeGreaterThanOrEqual(0.89);
+    expect(Number(cardStyles?.holoBeforeOpacity ?? 1)).toBeLessThanOrEqual(0.2);
+    expect(Number(cardStyles?.holoAfterOpacity ?? 1)).toBeLessThanOrEqual(0.2);
     expect(cardStyles?.cssText).toContain(".card-soft::after");
     expect(cardStyles?.cssText).toContain(".card-holo::after");
     expect(cardStyles?.cssText).toContain("@keyframes rainbowFlowShift");
     expect(cardStyles?.cssText).toContain("@keyframes cardShadowDrift");
     expect(cardStyles?.cssText).toMatch(/\.card-soft::after[\s\S]*opacity:\s*0\.15/);
     expect(cardStyles?.cssText).toMatch(/\.card-soft::before[\s\S]*opacity:\s*0\.165/);
-    expect(cardStyles?.cssText).toMatch(/\.card-holo::before[\s\S]*opacity:\s*0\.88/);
-    expect(cardStyles?.cssText).toMatch(/\.card-holo::after[\s\S]*opacity:\s*0\.9/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::before[\s\S]*opacity:\s*0\.165/);
+    expect(cardStyles?.cssText).toMatch(/\.card-holo::after[\s\S]*opacity:\s*0\.15/);
     expect(cardStyles?.cssText).toMatch(/\.card[\s\S]*overflow:\s*hidden/);
     expect(cardStyles?.cssText).toMatch(/\.card-soft::after[\s\S]*inset:\s*0/);
     expect(cardStyles?.cssText).toMatch(/\.card-soft::before[\s\S]*inset:\s*0/);
