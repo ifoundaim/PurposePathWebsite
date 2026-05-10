@@ -7,7 +7,10 @@ test.describe("PurposePath site", () => {
     await page.goto("/");
     const homeLogo = page.getByRole("link", { name: "PurposePath home" });
     await expect(homeLogo).toBeVisible();
-    await expect(homeLogo.locator("img")).toHaveAttribute("src", /purposepath-mark-matte\.png/);
+    await expect(homeLogo.locator("img")).toHaveAttribute(
+      "src",
+      /raw\.githubusercontent\.com\/ifoundaim\/PurposePathWebsite\/main\/public\/brand\/purposepath-mark-matte\.png/,
+    );
     await expect(page.getByRole("navigation").getByRole("link", { name: "RouteForge" }))
       .toBeVisible();
 

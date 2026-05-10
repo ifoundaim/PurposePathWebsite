@@ -4,6 +4,7 @@
 - Convert rainbow holographic surfaces to the gold/ink brand palette in `app/globals.css`, including smoother gold button/card shimmer and solid dark button text for readability.
 - Rebalance page section backgrounds across homepage, services, contact, and RouteForge pages using consistent paper, champagne, and gold-wash section treatments.
 - Update `tests/site.spec.ts` coverage for the matte logo, gold palette, smoother shimmer loop behavior, and softened testimonial card effects.
+- Point the header logo and metadata icons to the verified raw GitHub image URL, and remove dark stops from scroll reveal shimmer overlays for a cleaner gold-only sweep.
 
 ## 2026-04-25
 

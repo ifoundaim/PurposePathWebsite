@@ -12,6 +12,9 @@ const navLinks = [
   { label: "Contact", href: "/contact-us" },
 ];
 
+const purposePathLogoUrl =
+  "https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/public/brand/purposepath-mark-matte.png";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,7 +24,7 @@ export default function Header() {
         <Link className="nav-logo" href="/" aria-label="PurposePath home">
           <Image
             className="nav-logo-mark"
-            src="/brand/purposepath-mark-matte.png"
+            src={purposePathLogoUrl}
             alt=""
             width={34}
             height={34}

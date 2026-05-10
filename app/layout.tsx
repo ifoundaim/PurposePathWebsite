@@ -9,13 +9,16 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const purposePathLogoUrl =
+  "https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/public/brand/purposepath-mark-matte.png";
+
 export const metadata: Metadata = {
   title: "PurposePath Multimedia",
   description:
     "PurposePath is an AI-native multimedia studio and product venture building tools and worlds that let small teams create big stories.",
   icons: {
-    icon: "/brand/purposepath-mark-matte.png",
-    apple: "/brand/purposepath-mark-matte.png",
+    icon: purposePathLogoUrl,
+    apple: purposePathLogoUrl,
   },
 };
 
