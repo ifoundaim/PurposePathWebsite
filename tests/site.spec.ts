@@ -56,6 +56,34 @@ test.describe("PurposePath site", () => {
     await expect(subscribeButton).toBeVisible();
   });
 
+  test("homepage founder support gradient continues into footer", async ({ page }) => {
+    await page.goto("/");
+
+    const backgroundMeta = await page.evaluate(() => {
+      const founderSection = document.querySelector(".home-founder-support");
+      const footer = document.querySelector("footer");
+      if (!founderSection || !footer) return null;
+
+      const founderStyles = getComputedStyle(founderSection);
+      const footerStyles = getComputedStyle(footer);
+
+      return {
+        founderBorderBottom: founderStyles.borderBottomWidth,
+        footerBackground: footerStyles.backgroundImage,
+        footerBorderTop: footerStyles.borderTopWidth,
+      };
+    });
+
+    expect(backgroundMeta).toEqual(
+      expect.objectContaining({
+        founderBorderBottom: "0px",
+        footerBorderTop: "0px",
+      }),
+    );
+    expect(backgroundMeta?.footerBackground).toContain("linear-gradient");
+    expect(backgroundMeta?.footerBackground).toContain("221, 197, 138");
+  });
+
   test("forms are wired and required fields exist", async ({ page }) => {
     await page.goto("/contact-us");
     await expect(page.getByRole("textbox", { name: "Name" })).toBeVisible();

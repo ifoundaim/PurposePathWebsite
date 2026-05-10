@@ -173,6 +173,20 @@ main {
     );
 }
 
+.home-founder-support {
+  border-bottom: 0;
+}
+
+main:has(.home-founder-support) + .footer {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(221, 197, 138, 0.16),
+      rgba(241, 234, 216, 0.42)
+    );
+  border-top: 0;
+}
+
 .section::before {
   content: "";
   position: absolute;

@@ -55,7 +55,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-prism-lilac">
+      <section className="section section-prism-lilac home-founder-support">
         <div className="container">
           <StaggerContainer staggerDelay={150}>
             <p className="eyebrow stagger-item fall">Support the Founder on Throne</p>
