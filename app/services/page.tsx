@@ -108,12 +108,12 @@ export default function ServicesPage() {
               <img
                 className="review-avatar"
                 src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/d2056eed53cf6ff76153748599f6e291c9a53348/Secure%20the%20expertise%20of%20a%20premium%20CFO%20for%20your%20pre-seed%20journey.%20Start%20today%20%282%29.jpg"
-                alt="Susan Rheinman"
+                alt="Susan Rheman"
                 style={{ objectPosition: "center 32%" }}
                 loading="lazy"
               />
               <div>
-                <p className="review-name">Susan Rheinman</p>
+                <p className="review-name">Susan Rheman</p>
                 <p className="review-role">Founder of Seeds, Roots, &amp; Shoots</p>
               </div>
             </div>
