@@ -2,6 +2,7 @@
 
 - Update landing page About Us copy in `app/page.tsx` to focus on RouteForge as creator infrastructure, the artist licensing problem, the broader PurposePath vision, and LVLUP backing.
 - Replace homepage hero video source in `components/HeroVideo.tsx` with `route forge purposepath.mov` from the PurposePath S3 bucket.
+- Switch homepage hero video sizing in `app/globals.css` from `object-fit: cover` to `object-fit: contain` with page-matched letterboxing on `.hero-video-shell`, and add regression coverage in `tests/site.spec.ts`.
 
 ## 2026-05-10
 

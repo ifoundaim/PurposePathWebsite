@@ -159,6 +159,32 @@ test.describe("PurposePath site", () => {
     await expect(page.getByText("Unable to subscribe right now. Please try again.")).toBeVisible();
   });
 
+  test("hero video preserves full frame with page-matched letterboxing", async ({ page }) => {
+    await page.goto("/");
+
+    const heroVideo = page.getByLabel("PurposePath story reel");
+    const heroShell = page.locator(".hero-video-shell");
+
+    await expect(heroVideo).toBeVisible();
+
+    const videoStyles = await heroVideo.evaluate((video) => {
+      const computed = window.getComputedStyle(video);
+      return {
+        objectFit: computed.objectFit,
+        width: computed.width,
+        height: computed.height,
+      };
+    });
+
+    expect(videoStyles.objectFit).toBe("contain");
+
+    const shellBackground = await heroShell.evaluate((shell) => {
+      return window.getComputedStyle(shell).backgroundColor;
+    });
+
+    expect(shellBackground).toBe("rgb(250, 249, 243)");
+  });
+
   test("hero video sound controls and media-priority behavior work", async ({ page }) => {
     await page.goto("/");
 
