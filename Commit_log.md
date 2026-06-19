@@ -1,3 +1,7 @@
+## 2026-06-19
+
+- Update landing page About Us copy in `app/page.tsx` to focus on RouteForge as creator infrastructure, the artist licensing problem, the broader PurposePath vision, and LVLUP backing.
+
 ## 2026-05-10
 
 - Replace the header brand with a matte PurposePath mark asset and register matching site icons in `components/Header.tsx`, `app/layout.tsx`, and `public/brand/`.

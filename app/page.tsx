@@ -13,16 +13,25 @@ export default function HomePage() {
           <StaggerContainer staggerDelay={120}>
             <p className="eyebrow stagger-item fall">About Us</p>
             <p className="subtitle stagger-item">
-              PurposePath is an AI-native multimedia studio and product venture building the tools—and the worlds—that let small teams create big stories. Born from the vision of a scrappy solo founder with an ambition to change how audiences interact with media forever, we're making storytelling more accessible and less dependent on traditional production gatekeepers.
+              PurposePath is building creator infrastructure for the AI media era.
             </p>
             <p className="subtitle stagger-item">
-              We're building the PurposePath Story Engine to help creators move from idea to finished experience—concept art, animation, voice, music composition, editing, and beyond—without needing a giant studio behind them. This isn't just content creation. It's experience design: narratives that can evolve into interactive worlds where audiences shape outcomes through their choices.
+              Our introductory product is <strong>RouteForge</strong>, a creator-first registry and licensing platform that helps illustrators protect their work, define usage permissions, and license AI training rights with clearer provenance, consent, and compensation.
             </p>
             <p className="subtitle stagger-item">
-              Alongside the Story Engine, RouteForge is our creator-first IP registry and licensing marketplace—designed for an AI era where provenance, permissions, and fair value exchange must be built in from the start. Our goal is to help founders, artists, and small teams collaborate with confidence and monetize original work through clear usage rights and licensing pathways. We believe the future of entertainment will be participatory—bridging animation, games, and community-driven story evolution. Audience choices don't just enrich the narrative; they create a feedback loop that helps us refine stories, find niche communities, and expand the worlds that resonate most.
+              We are starting with the problem artists are facing right now: creative work can be shared, scraped, copied, trained on, and detached from the person who made it. RouteForge is being built to give artists stronger leverage through protected previews, licensing workflows, evidence records, and artist-owned style permissions.
             </p>
             <p className="subtitle stagger-item">
-              We're early, lean, and obsessed with iteration. But our direction is long-term: democratize world-class storytelling, honor creators, and build hybrid IP that can thrive across games, streaming, and the next mediums still being invented. Join us as we redefine storytelling, one choice at a time.
+              For producers and creative teams, RouteForge creates a cleaner path to build with licensed visual styles instead of relying on unclear rights or scraped material.
+            </p>
+            <p className="subtitle stagger-item">
+              PurposePath is the larger vision behind the product: a future production ecosystem where small teams can move from story concept to worldbuilding, licensed style selection, concept art, storyboarding, animation, music, publishing, and distribution.
+            </p>
+            <p className="subtitle stagger-item">
+              RouteForge is the foundation. PurposePath is the way forward.
+            </p>
+            <p className="subtitle stagger-item">
+              PurposePath / RouteForge is now backed by <strong>LVLUP</strong>, giving us momentum as we build the MVP, work with early artists, and create infrastructure where creation, consent, and compensation can work together.
             </p>
           </StaggerContainer>
         </div>
