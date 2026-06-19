@@ -1,6 +1,16 @@
+import fs from "fs";
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const repositoryName = "PurposePathWebsite";
 const isGithubPagesBuild = process.env.GITHUB_ACTIONS === "true";
+
+// If there's a CNAME file present, assume a custom domain and serve at domain root.
+const cnamePath = path.join(process.cwd(), "CNAME");
+const hasCustomDomain = fs.existsSync(cnamePath);
+
+const basePath = isGithubPagesBuild && !hasCustomDomain ? `/${repositoryName}` : "";
+const assetPrefix = isGithubPagesBuild && !hasCustomDomain ? `/${repositoryName}/` : "";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -9,8 +19,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isGithubPagesBuild ? `/${repositoryName}` : "",
-  assetPrefix: isGithubPagesBuild ? `/${repositoryName}/` : "",
+  basePath,
+  assetPrefix,
 };
 
 export default nextConfig;
