@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 const formspreeSubscribeRoute = /https:\/\/formspree\.io\/f\/.*/;
+const founderInboxEmail = "founder@purposepath.media";
 
 test.describe("PurposePath site", () => {
   test("primary navigation routes to key pages", async ({ page }) => {
@@ -90,12 +91,21 @@ test.describe("PurposePath site", () => {
     await expect(page.getByRole("textbox", { name: "Email", exact: true })).toBeVisible();
     await expect(page.getByRole("textbox", { name: "Message" })).toBeVisible();
 
-    const contactFormAction = await page.locator("form").first().getAttribute("action");
+    const contactForm = page.locator('form:has(input[name="name"])');
+    const contactFormAction = await contactForm.getAttribute("action");
     expect(contactFormAction).toContain("formspree.io");
+    await expect(contactForm.locator('input[name="_to"]')).toHaveValue(founderInboxEmail);
+    await expect(contactForm.locator('input[name="_subject"]')).toHaveValue(
+      "PurposePath contact inquiry",
+    );
 
     await page.goto("/");
     const subscribeFormAction = await page.locator("footer form").getAttribute("action");
     expect(subscribeFormAction).toContain("formspree.io/f/");
+    await expect(page.locator('footer input[name="_to"]')).toHaveValue(founderInboxEmail);
+    await expect(page.locator('footer input[name="_subject"]')).toHaveValue(
+      "PurposePath subscribe request",
+    );
   });
 
   test("contact founder image uses uncropped contain sizing", async ({ page }) => {
@@ -126,6 +136,15 @@ test.describe("PurposePath site", () => {
 
   test("subscribe form shows inline success and error states", async ({ page }) => {
     await page.route(formspreeSubscribeRoute, async (route) => {
+      const payload = route.request().postDataJSON() as {
+        email?: string;
+        _to?: string;
+        _subject?: string;
+      };
+
+      expect(payload._to).toBe(founderInboxEmail);
+      expect(payload._subject).toBe("PurposePath subscribe request");
+
       await route.fulfill({
         status: 200,
         contentType: "application/json",

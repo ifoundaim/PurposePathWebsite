@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { subscribeFormEndpoint } from "@/lib/forms";
+import { getFormspreeRoutingFields, subscribeFormEndpoint, subscribeFormSubject } from "@/lib/forms";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -53,7 +53,10 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({
+        email,
+        ...getFormspreeRoutingFields(subscribeFormSubject),
+      }),
     });
 
     if (!upstreamResponse.ok) {

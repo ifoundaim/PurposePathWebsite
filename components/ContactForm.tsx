@@ -1,9 +1,15 @@
-import { contactFormEndpoint } from "@/lib/forms";
+import {
+  contactFormEndpoint,
+  contactFormSubject,
+  founderInboxEmail,
+} from "@/lib/forms";
 import RainbowFlowText from "@/components/RainbowFlowText";
 
 export default function ContactForm() {
   return (
     <form action={contactFormEndpoint} method="POST">
+      <input type="hidden" name="_to" value={founderInboxEmail} />
+      <input type="hidden" name="_subject" value={contactFormSubject} />
       <label>
         Name
         <input type="text" name="name" placeholder="Name" required />

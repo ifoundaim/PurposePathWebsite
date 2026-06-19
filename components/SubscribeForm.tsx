@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import RainbowFlowText from "@/components/RainbowFlowText";
-import { subscribeFormEndpoint } from "@/lib/forms";
+import { subscribeFormEndpoint, subscribeFormSubject, founderInboxEmail, getFormspreeRoutingFields } from "@/lib/forms";
 
 function isConfiguredEndpoint(endpoint: string) {
   return !endpoint.includes("REPLACE_WITH_SUBSCRIBE_FORM_ID");
@@ -40,7 +40,10 @@ export default function SubscribeForm() {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ email: normalizedEmail }),
+        body: JSON.stringify({
+          email: normalizedEmail,
+          ...getFormspreeRoutingFields(subscribeFormSubject),
+        }),
       });
 
       let payload: { message?: string } = {};
@@ -71,6 +74,8 @@ export default function SubscribeForm() {
 
   return (
     <form action={subscribeFormEndpoint} method="POST" onSubmit={handleSubmit} noValidate>
+      <input type="hidden" name="_to" value={founderInboxEmail} />
+      <input type="hidden" name="_subject" value={subscribeFormSubject} />
       <label>
         Your Email
         <input
