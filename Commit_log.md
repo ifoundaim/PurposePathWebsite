@@ -1,6 +1,7 @@
 ## 2026-06-19
 
 - Update landing page About Us copy in `app/page.tsx` to focus on RouteForge as creator infrastructure, the artist licensing problem, the broader PurposePath vision, and LVLUP backing.
+- Replace homepage hero video source in `components/HeroVideo.tsx` with `route forge purposepath.mov` from the PurposePath S3 bucket.
 
 ## 2026-05-10
 

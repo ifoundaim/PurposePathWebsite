@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const HERO_VIDEO_SRC =
-  "https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/0820.mov";
+  "https://videosbucketpurposepath.s3.us-east-2.amazonaws.com/route+forge+purposepath.mov";
 const HERO_VIDEO_VOLUME = 0.5;
 
 export default function HeroVideo() {
