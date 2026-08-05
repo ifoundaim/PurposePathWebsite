@@ -1,5 +1,7 @@
+import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal, { StaggerContainer } from "@/components/ScrollReveal";
+import founderPortrait from "@/READY 2 GO.jpg";
 
 export default function ContactPage() {
   return (
@@ -12,9 +14,9 @@ export default function ContactPage() {
             Matthew Reese is eager to speak to potential creative partners,
             distributors, and investors.
           </p>
-          <img
+          <Image
             className="stagger-item"
-            src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/READY%202%20GO.jpg"
+            src={founderPortrait}
             alt="Founder portrait"
             style={{
               width: "550px",

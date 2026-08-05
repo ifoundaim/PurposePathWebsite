@@ -7,9 +7,10 @@ import RainbowFlowText from "@/components/RainbowFlowText";
 import purposePathMark from "@/public/brand/purposepath-mark-transparent.png";
 
 const navLinks = [
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Principles", href: "/#principles" },
   { label: "RouteForge", href: "/illustration-market" },
-  { label: "Skill Offers", href: "/services" },
-  { label: "Throne", href: "https://throne.com/ifoundaim" },
+  { label: "Capabilities", href: "/services" },
   { label: "Contact", href: "/contact-us" },
 ];
 
@@ -44,7 +45,7 @@ export default function Header() {
         </nav>
         <div className="nav-links">
           <Link className="button menu-surface" href="/contact-us">
-            <RainbowFlowText className="button-label" text="CONTACT US" />
+            <RainbowFlowText className="button-label" text="BUILD WITH US" />
           </Link>
         </div>
         <button
