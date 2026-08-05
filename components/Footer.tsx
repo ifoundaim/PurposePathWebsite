@@ -10,7 +10,8 @@ export default function Footer() {
           <p className="eyebrow stagger-item fall">Stay in the loop</p>
           <h2 className="title stagger-item fall">Subscribe</h2>
           <p className="subtitle stagger-item">
-            PurposePath updates on new products, services, and collaborations.
+            Notes from the PurposePath portfolio: new products, experiments,
+            partnerships, and ways to participate.
           </p>
           <div className="stagger-item" style={{ marginTop: "20px" }}>
             <SubscribeForm />
@@ -20,12 +21,11 @@ export default function Footer() {
           <p className="eyebrow">Links</p>
           <div className="footer-links" style={{ marginTop: "16px" }}>
             <Link href="/">Home</Link>
+            <Link href="/#portfolio">Portfolio</Link>
+            <Link href="/#principles">Principles</Link>
             <Link href="/contact-us">Contact</Link>
-            <Link href="https://twitter.com" target="_blank" rel="noreferrer">
-              X
-            </Link>
             <Link href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
-              Throne
+              Support the founder
             </Link>
             <Link href="/illustration-market">RouteForge</Link>
           </div>

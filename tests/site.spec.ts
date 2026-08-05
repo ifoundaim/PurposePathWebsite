@@ -15,8 +15,8 @@ test.describe("PurposePath site", () => {
     await expect(page.getByRole("navigation").getByRole("link", { name: "RouteForge" }))
       .toBeVisible();
 
-    await page.getByRole("link", { name: "Skill Offers" }).click();
-    await expect(page.getByRole("heading", { name: "Skill Offers" }))
+    await page.getByRole("link", { name: "Capabilities", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Capabilities" }))
       .toBeVisible();
 
     await page.getByRole("navigation").getByRole("link", { name: "Contact" }).click();
@@ -57,32 +57,20 @@ test.describe("PurposePath site", () => {
     await expect(subscribeButton).toBeVisible();
   });
 
-  test("homepage founder support gradient continues into footer", async ({ page }) => {
+  test("homepage presents the corporate thesis and portfolio", async ({ page }) => {
     await page.goto("/");
 
-    const backgroundMeta = await page.evaluate(() => {
-      const founderSection = document.querySelector(".home-founder-support");
-      const footer = document.querySelector("footer");
-      if (!founderSection || !footer) return null;
-
-      const founderStyles = getComputedStyle(founderSection);
-      const footerStyles = getComputedStyle(footer);
-
-      return {
-        founderBorderBottom: founderStyles.borderBottomWidth,
-        footerBackground: footerStyles.backgroundImage,
-        footerBorderTop: footerStyles.borderTopWidth,
-      };
-    });
-
-    expect(backgroundMeta).toEqual(
-      expect.objectContaining({
-        founderBorderBottom: "0px",
-        footerBorderTop: "0px",
+    await expect(
+      page.getByRole("heading", {
+        name: /We build liberated, ultra-customizable, and consent-based technology/i,
       }),
-    );
-    expect(backgroundMeta?.footerBackground).toContain("linear-gradient");
-    expect(backgroundMeta?.footerBackground).toContain("221, 197, 138");
+    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "RouteForge" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Angelgotchi" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Studio & build partnerships" }),
+    ).toBeVisible();
+    await expect(page.getByText("Backed by LVLUP")).toBeVisible();
   });
 
   test("forms are wired and required fields exist", async ({ page }) => {
@@ -115,7 +103,7 @@ test.describe("PurposePath site", () => {
     await expect(founderImage).toBeVisible();
     await expect(founderImage).toHaveAttribute(
       "src",
-      /READY%202%20GO\.jpg$/,
+      /READY 2 GO/,
     );
 
     const computed = await founderImage.evaluate((img) => {
@@ -205,6 +193,25 @@ test.describe("PurposePath site", () => {
   });
 
   test("hero video sound controls and media-priority behavior work", async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(HTMLMediaElement.prototype, "paused", {
+        configurable: true,
+        get() {
+          return Boolean((this as HTMLMediaElement & { __testPaused?: boolean }).__testPaused);
+        },
+      });
+
+      HTMLMediaElement.prototype.play = async function play() {
+        (this as HTMLMediaElement & { __testPaused?: boolean }).__testPaused = false;
+        this.dispatchEvent(new Event("play"));
+      };
+
+      HTMLMediaElement.prototype.pause = function pause() {
+        (this as HTMLMediaElement & { __testPaused?: boolean }).__testPaused = true;
+        this.dispatchEvent(new Event("pause"));
+      };
+    });
+
     await page.goto("/");
 
     const heroVideo = page.getByLabel("PurposePath story reel");

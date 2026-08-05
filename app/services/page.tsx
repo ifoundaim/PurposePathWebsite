@@ -5,12 +5,13 @@ export default function ServicesPage() {
     <section className="section section-prism-cool">
       <div className="container">
         <StaggerContainer staggerDelay={100}>
-          <p className="eyebrow stagger-item fall">Skill Offers</p>
-          <h1 className="title stagger-item fall">Skill Offers</h1>
+          <p className="eyebrow stagger-item fall">Studio &amp; build partnerships</p>
+          <h1 className="title stagger-item fall">Capabilities</h1>
           <p className="subtitle stagger-item">
-            From website and app development to content creation and ad
-            management, PurposePath brings a range of skills to help
-            purpose-driven founders build and grow.
+            PurposePath builds its own portfolio and selectively helps aligned
+            founders move from concept to shipped product. We combine product
+            direction, software development, design, and AI-native creative
+            production with a growing network of specialist partners.
           </p>
         </StaggerContainer>
 
@@ -65,79 +66,6 @@ export default function ServicesPage() {
           </div>
         </StaggerContainer>
 
-        <ScrollReveal className="fall" delay={100}>
-          <h2 className="title" style={{ marginTop: "48px" }}>Hear what our clients are saying</h2>
-        </ScrollReveal>
-
-        <ScrollReveal className="scale-up" delay={200}>
-          <div
-            className="card card-holo review-card"
-            style={{ marginTop: "24px" }}
-          >
-            <div className="review-header">
-              <img
-                className="review-avatar"
-                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/main/scale%20joel.png"
-                alt="Joel Camacho"
-                loading="lazy"
-              />
-              <div>
-                <p className="review-name">Joel Camacho</p>
-                <p className="review-role">Founder, PCMX</p>
-              </div>
-            </div>
-            <p className="review-quote">
-              &quot;Working with Matthew to build my website for PCMX was great and a
-              learning experience&quot;
-            </p>
-            <p className="review-body">
-              &quot;Not only was Matthew able to build my website in less than two
-              weeks, but he also had a positive attitude throughout the entire
-              process. Any business owner / founder is in great hands with
-              Matthew.&quot;
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal className="scale-up" delay={240}>
-          <div
-            className="card card-holo review-card"
-            style={{ marginTop: "24px" }}
-          >
-            <div className="review-header">
-              <img
-                className="review-avatar"
-                src="https://raw.githubusercontent.com/ifoundaim/PurposePathWebsite/d2056eed53cf6ff76153748599f6e291c9a53348/Secure%20the%20expertise%20of%20a%20premium%20CFO%20for%20your%20pre-seed%20journey.%20Start%20today%20%282%29.jpg"
-                alt="Susan Rheman"
-                style={{ objectPosition: "center 32%" }}
-                loading="lazy"
-              />
-              <div>
-                <p className="review-name">Susan Rheman</p>
-                <p className="review-role">Founder of Seeds, Roots, &amp; Shoots</p>
-              </div>
-            </div>
-            <p className="review-quote">
-              &quot;I met Matthew doing community work, and was impressed by his
-              dedication, honesty, and kindness.&quot;
-            </p>
-            <p className="review-body">
-              &quot;He seemed to have a talent for technology and design so I asked
-              him to build a new website for my business. He did a beautiful job.
-              It was his first website using SquareSpace and he worked
-              persistently with the company until it looked and worked just how
-              we wanted. He is always eager to keep learning and growing. He can
-              see the potential of a company and works with vision, strongly
-              motivated to do good in the world. He likes to build teams and
-              make alliances where everyone benefits. He helped me find a
-              wonderful photographer to take pictures for the website and for
-              seasonal social media. We worked together on social media posts
-              and emails to boost traffic to the website. I&apos;m grateful for
-              Matthew creating a beautiful website and for his vision of what my
-              company can become.&quot;
-            </p>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

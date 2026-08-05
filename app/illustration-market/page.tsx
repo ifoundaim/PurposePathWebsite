@@ -113,15 +113,17 @@ export default function IllustrationMarketPage() {
           </p>
 
           <h2 className="title stagger-item" style={{ marginTop: "28px" }}>
-            The ecosystem this becomes: PurposePath
+            How RouteForge fits the PurposePath portfolio
           </h2>
           <p className="subtitle stagger-item">
-            RouteForge is the marketplace layer. PurposePath is the pipeline.
+            RouteForge is one venture inside PurposePath Corp: a portfolio company
+            building liberated, ultra-customizable, consent-based technology.
           </p>
           <p className="subtitle stagger-item">
-            PurposePath = a suite of multimedia creator tools that plug into licensed
-            styles from RouteForge. So once you license a style, you can use it across
-            an end-to-end production route.
+            Its role in that portfolio is foundational: make creative consent and
+            commercial rights usable inside real production workflows. The registry,
+            permission, and provenance systems developed here can strengthen future
+            creator tools without forcing every PurposePath venture into one monolith.
           </p>
           <p className="subtitle stagger-item">
             <strong>Example: Story route</strong>
@@ -139,14 +141,12 @@ export default function IllustrationMarketPage() {
             build-ready exports
           </p>
           <p className="subtitle stagger-item">
-            Same promise across both:
+            Across those routes, the PurposePath standard remains the same:
           </p>
           <ul className="subtitle stagger-item">
-            <li>licensed styles are available as tools, not just a contract</li>
-            <li>outputs carry metadata for usage tracking and royalties</li>
-            <li>
-              creators and producers share a clean rights chain from start to finish
-            </li>
+            <li>people choose how their work and information are used</li>
+            <li>tools adapt to the creator instead of flattening the creator</li>
+            <li>permissions and participation remain legible from source to output</li>
           </ul>
 
           <h2 className="title stagger-item" style={{ marginTop: "28px" }}>
