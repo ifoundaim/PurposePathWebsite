@@ -73,6 +73,20 @@ test.describe("PurposePath site", () => {
     await expect(page.getByText("Backed by LVLUP")).toBeVisible();
   });
 
+  test("hero portfolio CTA scrolls to the portfolio section", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByRole("link", { name: "Explore the portfolio" }).click();
+
+    await expect(page).toHaveURL(/#portfolio$/);
+    await expect(page.locator("#portfolio")).toBeInViewport();
+    await expect(
+      page.getByRole("heading", {
+        name: "Different products. One covenant with the user.",
+      }),
+    ).toBeVisible();
+  });
+
   test("forms are wired and required fields exist", async ({ page }) => {
     await page.goto("/contact-us");
     await expect(page.getByRole("textbox", { name: "Name" })).toBeVisible();

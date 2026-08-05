@@ -81,9 +81,13 @@ export default function HomePage() {
               people more authorship over the technology in their lives.
             </p>
             <div className="hero-actions stagger-item">
-              <Link className="button hero-primary-button" href="#portfolio">
+              <a
+                className="button hero-primary-button"
+                href="#portfolio"
+                aria-controls="portfolio"
+              >
                 <RainbowFlowText className="button-label" text="Explore the portfolio" />
-              </Link>
+              </a>
               <Link className="hero-text-link" href="/contact-us">
                 Build with us <span aria-hidden="true">↗</span>
               </Link>
