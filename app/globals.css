@@ -1685,6 +1685,7 @@ label {
   font-weight: 650;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .orbit-label-one {
@@ -1694,7 +1695,7 @@ label {
 
 .orbit-label-two {
   top: 46%;
-  right: -5%;
+  right: 0;
 }
 
 .orbit-label-three {
@@ -2317,7 +2318,7 @@ main:has(.closing-cta-section) + .footer input {
   }
 
   .orbit-label-two {
-    right: -1%;
+    right: 0;
   }
 
   .hero-proof-row {
