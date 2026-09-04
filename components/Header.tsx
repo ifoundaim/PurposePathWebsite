@@ -8,6 +8,7 @@ import purposePathMark from "@/public/brand/purposepath-mark-transparent.png";
 
 const navLinks = [
   { label: "Portfolio", href: "/#portfolio" },
+  { label: "Hymn", href: "/#hymn" },
   { label: "Principles", href: "/#principles" },
   { label: "RouteForge", href: "/illustration-market" },
   { label: "Capabilities", href: "/services" },

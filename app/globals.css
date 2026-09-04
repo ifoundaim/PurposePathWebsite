@@ -1725,7 +1725,8 @@ label {
 }
 
 #principles,
-#portfolio {
+#portfolio,
+#hymn {
   scroll-margin-top: 92px;
 }
 
@@ -1992,6 +1993,173 @@ label {
   font-size: 0.86rem;
 }
 
+.hymn-section {
+  padding-block: clamp(92px, 11vw, 154px);
+  color: #faf9f3;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(234, 215, 164, 0.14), transparent 28%),
+    linear-gradient(105deg, transparent 45%, rgba(221, 197, 138, 0.055) 62%, transparent 78%),
+    #090a0c;
+}
+
+.hymn-section::before {
+  background:
+    linear-gradient(90deg, transparent 0 58%, rgba(234, 215, 164, 0.16) 58.1%, transparent 58.35%),
+    linear-gradient(90deg, transparent 0 84%, rgba(234, 215, 164, 0.08) 84.1%, transparent 84.3%);
+  opacity: 0.42;
+}
+
+.hymn-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+  gap: clamp(52px, 9vw, 128px);
+  align-items: end;
+}
+
+.hymn-section .eyebrow {
+  color: var(--gold-bright);
+}
+
+.hymn-wordmark {
+  margin-left: -0.05em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(5.4rem, 13vw, 10.5rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.78;
+}
+
+.hymn-wordmark span {
+  display: inline-block;
+  margin-left: 0.13em;
+  color: var(--gold-bright);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.28em;
+  vertical-align: top;
+  translate: 0 0.05em;
+}
+
+.hymn-thesis {
+  margin-top: 30px;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+.hymn-about {
+  display: grid;
+  gap: 20px;
+  padding-left: clamp(24px, 4vw, 54px);
+  border-left: 1px solid rgba(234, 215, 164, 0.22);
+}
+
+.hymn-about > p {
+  color: rgba(250, 249, 243, 0.68);
+  line-height: 1.75;
+}
+
+.hymn-suno-button {
+  width: fit-content;
+  gap: 10px;
+  margin-top: 8px;
+  color: var(--ink-deep);
+  background: linear-gradient(135deg, #faf9f3, #ead7a4);
+  border-color: rgba(250, 249, 243, 0.24);
+}
+
+.hymn-release-list {
+  display: grid;
+  gap: 28px;
+  margin-top: clamp(58px, 8vw, 94px);
+}
+
+.hymn-release-card {
+  overflow: hidden;
+  border: 1px solid rgba(234, 215, 164, 0.2);
+  border-radius: 26px;
+  background: rgba(19, 20, 22, 0.92);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34);
+}
+
+.hymn-release-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #050607;
+}
+
+.hymn-release-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid rgba(250, 249, 243, 0.07);
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.2);
+}
+
+.hymn-release-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hymn-release-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: end;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.hymn-release-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold-base);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hymn-release-label span {
+  color: rgba(250, 249, 243, 0.38);
+}
+
+.hymn-release-details h3 {
+  margin-top: 11px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 4.25rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.hymn-release-details div > p:last-child {
+  max-width: 720px;
+  margin-top: 16px;
+  color: rgba(250, 249, 243, 0.6);
+  line-height: 1.7;
+}
+
+.hymn-release-details > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+  color: var(--gold-light);
+  font-weight: 650;
+  border-bottom: 1px solid rgba(243, 230, 189, 0.32);
+  white-space: nowrap;
+  transition: gap 0.2s ease, border-color 0.2s ease;
+}
+
+.hymn-release-details > a:hover,
+.hymn-release-details > a:focus-visible {
+  gap: 14px;
+  border-color: var(--gold-light);
+}
+
 .closing-cta-section {
   padding-block: clamp(80px, 9vw, 124px);
   color: #faf9f3;
@@ -2064,8 +2232,13 @@ main:has(.closing-cta-section) + .footer input {
 
   .portfolio-heading-grid,
   .ecosystem-grid,
-  .prototype-grid {
+  .prototype-grid,
+  .hymn-intro-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hymn-about {
+    max-width: 720px;
   }
 
   .portfolio-heading-grid {
@@ -2162,6 +2335,26 @@ main:has(.closing-cta-section) + .footer input {
 
   .display-title {
     font-size: clamp(2.25rem, 11vw, 3.5rem);
+  }
+
+  .hymn-wordmark {
+    font-size: clamp(4.6rem, 25vw, 7rem);
+  }
+
+  .hymn-about {
+    padding-top: 24px;
+    padding-left: 0;
+    border-top: 1px solid rgba(234, 215, 164, 0.22);
+    border-left: 0;
+  }
+
+  .hymn-release-details {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .hymn-release-details > a {
+    width: fit-content;
   }
 
   .principles-grid {

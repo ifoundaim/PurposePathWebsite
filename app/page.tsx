@@ -62,6 +62,18 @@ const portfolio = [
   },
 ];
 
+const hymnReleases = [
+  {
+    index: "01",
+    title: "who you wanna be",
+    description:
+      "A question for the person you become when the lights go low and the pressure comes—with Solgrace joining the climb.",
+    videoSrc: "/media/hymn/who-you-wanna-be-promo.mp4",
+    posterSrc: "/media/hymn/who-you-wanna-be-poster.jpg",
+    songHref: "https://suno.com/song/354ad82d-f65b-4513-a9d4-eb3b722bd034",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -248,6 +260,72 @@ export default function HomePage() {
               Featured experiment: an AI-native animation created with Suno,
               ChatGPT image generation, Vidu, and CapCut.
             </p>
+          </StaggerContainer>
+        </div>
+      </section>
+
+      <section className="section hymn-section" id="hymn">
+        <div className="container">
+          <div className="hymn-intro-grid">
+            <ScrollReveal className="fall hymn-identity">
+              <p className="eyebrow">PurposePath / Music</p>
+              <h2 className="hymn-wordmark">
+                HYMN<span aria-hidden="true">†</span>
+              </h2>
+              <p className="hymn-thesis">Music for the climb.</p>
+            </ScrollReveal>
+
+            <StaggerContainer className="hymn-about" staggerDelay={100}>
+              <p className="stagger-item">
+                Hymn is the musical identity of PurposePath founder Matthew Reese—songs
+                about faith, ambition, longing, and becoming.
+              </p>
+              <p className="stagger-item">
+                Each release turns the portfolio&apos;s ideas into something you can feel:
+                music as worship, character as meaning, and creation as a path forward.
+              </p>
+              <a
+                className="button hymn-suno-button stagger-item"
+                href="https://suno.com/@ifoundaim"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <RainbowFlowText className="button-label" text="Hear Hymn on Suno" />
+                <span aria-hidden="true">↗</span>
+              </a>
+            </StaggerContainer>
+          </div>
+
+          <StaggerContainer className="hymn-release-list" staggerDelay={120}>
+            {hymnReleases.map((release) => (
+              <article className="hymn-release-card stagger-item" key={release.index}>
+                <div className="hymn-release-media">
+                  <video
+                    src={release.videoSrc}
+                    poster={release.posterSrc}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    preload="metadata"
+                    aria-label={`${release.title} by Hymn promotional video`}
+                  />
+                </div>
+                <div className="hymn-release-details">
+                  <div>
+                    <p className="hymn-release-label">
+                      <span>{release.index}</span> Latest release
+                    </p>
+                    <h3>{release.title}</h3>
+                    <p>{release.description}</p>
+                  </div>
+                  <a href={release.songHref} target="_blank" rel="noreferrer">
+                    Listen on Suno <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
+              </article>
+            ))}
           </StaggerContainer>
         </div>
       </section>

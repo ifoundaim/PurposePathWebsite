@@ -22,12 +22,16 @@ export default function Footer() {
           <div className="footer-links" style={{ marginTop: "16px" }}>
             <Link href="/">Home</Link>
             <Link href="/#portfolio">Portfolio</Link>
+            <Link href="/#hymn">Hymn</Link>
             <Link href="/#principles">Principles</Link>
             <Link href="/contact-us">Contact</Link>
             <Link href="https://throne.com/ifoundaim" target="_blank" rel="noreferrer">
               Support the founder
             </Link>
             <Link href="/illustration-market">RouteForge</Link>
+            <Link href="https://suno.com/@ifoundaim" target="_blank" rel="noreferrer">
+              Hymn on Suno
+            </Link>
           </div>
         </ScrollReveal>
       </div>
