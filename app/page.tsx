@@ -46,8 +46,8 @@ const portfolio = [
     description:
       "A character-first AI companion experience spanning expressive hardware and software, designed around a secure, user-controlled personal information ecosystem.",
     thesis: "Powerful AI can feel personal without taking ownership of the person.",
-    href: "/contact-us?subject=Angelgotchi",
-    cta: "Ask about Angelgotchi",
+    href: "https://1333covenant.com/angelgotchibuilder/",
+    cta: "Build your Angelgotchi",
   },
   {
     index: "03",
