@@ -20,23 +20,36 @@ export default function ServicesPage() {
         </ScrollReveal>
         <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
           <div className="card card-soft service-offer-card stagger-item">
-            <h3>Website Design &amp; Development (starting at $1,997)</h3>
+            <h3>Founder Launch Site</h3>
+            <p className="service-offer-price">Starting investment — $4,997</p>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
-              <li>Custom Webflow design</li>
-              <li>Mobile-responsive build</li>
-              <li>Core pages + blog setup</li>
-              <li>Basic SEO optimization</li>
-              <li>2 revision rounds</li>
+              <li>Positioning and conversion-focused page architecture</li>
+              <li>Custom responsive design and development</li>
+              <li>Core pages, CMS, and analytics setup</li>
+              <li>Technical SEO and launch support</li>
+              <li>Two focused revision rounds</li>
             </ul>
           </div>
           <div className="card card-soft service-offer-card stagger-item">
-            <h3>Fully Shippable MVP App Development (starting at $4,997)</h3>
+            <h3>Product Validation Sprint</h3>
+            <p className="service-offer-price">Starting investment — $2,500</p>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
-              <li>1-week discovery + product scope</li>
-              <li>Lean UX/UI for core flows</li>
-              <li>Full-stack build (web or mobile)</li>
-              <li>Auth, payments, and analytics setup</li>
-              <li>QA, deployment, and handoff docs</li>
+              <li>One-week discovery and decision sprint</li>
+              <li>Customer problem and core workflow definition</li>
+              <li>Lean prototype of the critical experience</li>
+              <li>Technical approach and delivery roadmap</li>
+              <li>A clear build, test, or pause recommendation</li>
+            </ul>
+          </div>
+          <div className="card card-soft service-offer-card stagger-item">
+            <h3>Production MVP</h3>
+            <p className="service-offer-price">Starting investment — $14,997</p>
+            <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
+              <li>Product scope and implementation plan</li>
+              <li>Lean UX/UI for the highest-value flows</li>
+              <li>Full-stack web or mobile development</li>
+              <li>Required auth, payments, and analytics</li>
+              <li>QA, deployment, and handoff documentation</li>
             </ul>
           </div>
         </StaggerContainer>
@@ -46,22 +59,25 @@ export default function ServicesPage() {
         </ScrollReveal>
         <StaggerContainer className="grid grid-2" staggerDelay={120} style={{ marginTop: "12px" }}>
           <div className="card card-soft service-offer-card stagger-item">
-            <h3>Content Creation Bundle ‍ (starting at $797/mo)</h3>
+            <h3>Founder Content System</h3>
+            <p className="service-offer-price">Starting investment — $1,497/month</p>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
-              <li>4 social media designs/mo</li>
-              <li>2 short-form videos/mo</li>
-              <li>Basic content strategy</li>
-              <li>Brand style adherence</li>
-              <li>Monthly planning call</li>
+              <li>Narrative and positioning direction</li>
+              <li>Four designed social assets each month</li>
+              <li>Two short-form videos each month</li>
+              <li>Monthly content plan and creative review</li>
+              <li>Consistent execution across your brand system</li>
             </ul>
           </div>
           <div className="card card-soft service-offer-card stagger-item">
-            <h3>Targeted Ad Management ‍ (starting at $997/mo)</h3>
+            <h3>Paid Growth Management</h3>
+            <p className="service-offer-price">Starting investment — $1,500/month</p>
             <ul style={{ marginTop: "16px", color: "var(--muted)" }}>
-              <li>Facebook/Instagram setup</li>
-              <li>Custom audience building</li>
-              <li>Monthly budget management</li>
-              <li>Performance reporting</li>
+              <li>Campaign and audience strategy</li>
+              <li>Meta campaign setup and management</li>
+              <li>Budget pacing and ongoing optimization</li>
+              <li>Monthly reporting and decision review</li>
+              <li>Advertising media spend billed separately</li>
             </ul>
           </div>
         </StaggerContainer>
