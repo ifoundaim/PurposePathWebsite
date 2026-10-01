@@ -116,6 +116,55 @@ body {
   height: 100%;
 }
 
+.pilot-page {
+  background: var(--bg);
+  color: var(--ink-deep);
+  padding: clamp(28px, 5vw, 72px) 20px 76px;
+}
+
+.pilot-shell { max-width: 1120px; margin: 0 auto; }
+.pilot-kicker { color: #6d5b37; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
+.pilot-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(24px, 5vw, 68px); margin-top: 24px; }
+.pilot-hero h1 { font-family: Georgia, serif; font-size: clamp(2.25rem, 4vw, 3.65rem); font-weight: 500; line-height: 1.12; letter-spacing: 0; max-width: 640px; }
+.pilot-hero-copy p { font-size: 1.125rem; line-height: 1.65; max-width: 630px; margin: 22px 0 28px; }
+.pilot-artwork img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.pilot-primary-link { display: inline-flex; align-items: center; min-height: 48px; background: var(--ink-deep); color: var(--bg); padding: 11px 20px; font-weight: 700; border: 1px solid var(--ink-deep); }
+.pilot-primary-link:hover, .pilot-primary-link:focus-visible { background: #383128; color: white; }
+.pilot-divider { height: 3px; width: 104px; background: var(--gold-deep); margin: 58px 0 35px; }
+.pilot-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 60px; }
+.pilot-detail { border-top: 1px solid var(--border); padding-top: 17px; }
+.pilot-detail h2, .pilot-service h2, .pilot-timeline h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.pilot-detail p, .pilot-service p, .pilot-timeline p, .pilot-timeline li, .pilot-close p { font-size: 1rem; line-height: 1.65; }
+.pilot-service { margin: 45px 0; padding: 26px 30px; background: var(--bg-alt); border-left: 4px solid var(--gold-deep); }
+.pilot-service p { max-width: 850px; }
+.pilot-timeline ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; list-style: none; margin: 18px 0 14px; }
+.pilot-timeline li { border-top: 1px solid var(--border); padding-top: 12px; }
+.pilot-timeline li strong { display: block; }
+.pilot-close { background: var(--ink-deep); color: var(--bg); padding: 30px; margin-top: 48px; }
+.pilot-close h2 { font-family: Georgia, serif; font-size: 1.75rem; font-weight: 500; margin-bottom: 8px; }
+.pilot-close p { max-width: 700px; margin-bottom: 18px; }
+.pilot-close .pilot-primary-link { background: var(--gold-base); color: var(--ink-deep); border-color: var(--gold-base); }
+.pilot-close small { display: block; font-size: 0.8rem; margin-top: 20px; color: #ddd3bd; }
+
+@media (max-width: 760px) {
+  .pilot-hero, .pilot-detail-grid, .pilot-timeline ol { grid-template-columns: 1fr; }
+  .pilot-artwork { max-width: 560px; }
+  .pilot-divider { margin-top: 42px; }
+}
+
+@media print {
+  .pilot-page { padding: 12px 22px; }
+  .pilot-hero { grid-template-columns: 1.4fr 0.6fr; gap: 16px; }
+  .pilot-hero h1 { font-size: 25px; }
+  .pilot-hero-copy p, .pilot-detail p, .pilot-service p, .pilot-timeline p, .pilot-timeline li, .pilot-close p { font-size: 10px; line-height: 1.35; }
+  .pilot-divider { margin: 18px 0; }
+  .pilot-detail-grid { gap: 12px 20px; }
+  .pilot-service { margin: 18px 0; padding: 12px; }
+  .pilot-timeline ol { gap: 14px; }
+  .pilot-close { margin-top: 16px; padding: 14px; print-color-adjust: exact; }
+  .pilot-primary-link { min-height: 0; padding: 5px 9px; }
+}
+
 body {
   background: var(--prism-body-glow), var(--bg);
   color: var(--text);

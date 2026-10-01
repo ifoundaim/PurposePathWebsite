@@ -1,5 +1,6 @@
 import RainbowFlowText from "@/components/RainbowFlowText";
 import { StaggerContainer } from "@/components/ScrollReveal";
+import Link from "next/link";
 
 export default function IllustrationMarketPage() {
   return (
@@ -27,6 +28,9 @@ export default function IllustrationMarketPage() {
                 <a className="holo-inline-link" href="#waitlist-subscribe">
                   <RainbowFlowText className="menu-label" text="[Subscribe to join the waitlist]" />
                 </a>
+              </p>
+              <p className="subtitle stagger-item">
+                Studio or production team? <Link className="holo-inline-link" href="/studio-pilot">Explore the Founding Studio Pilot</Link>.
               </p>
             </div>
             <div className="video-frame stagger-item">
